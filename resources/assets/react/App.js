@@ -31,6 +31,8 @@ import AssoDetailScreen from './screens/Asso';
 import ProfileScreen from './screens/Profile';
 import BookingScreen from './screens/Booking';
 import PartnersListScreen from './screens/PartnersList';
+import EvenementsCalendarScreen from './screens/Evenements'
+
 
 class App extends React.Component {
 	constructor(props) {
@@ -60,6 +62,7 @@ class App extends React.Component {
 											<Route path="/assos/:login" component={AssoDetailScreen} />
 											<Route path="/services" exact component={ServiceListScreen} />
 											<Route path="/partners" exact component={PartnersListScreen} />
+											<Route path="/evenements" exact component={EvenementsCalendarScreen} />
 											<LoggedRoute path="/profile" component={ProfileScreen} />
 											<LoggedRoute
 												path="/bookings"
