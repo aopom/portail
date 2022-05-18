@@ -163,5 +163,7 @@ Route::group([], function () {
         'articles/{article_id}/actions'	=> 'Article\ActionController',
         'visibilities' => 'Visibility\VisibilityController',
         'semesters' => 'Semester\SemesterController',
+        'eventsMobilizon' => 'Mobilizon\Events',
+
     ]);
 });

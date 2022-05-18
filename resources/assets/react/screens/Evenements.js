@@ -18,7 +18,7 @@
         fetch('https://assos.utc.fr/api/v1/assos')
         .then((response) => response.json())
         .then(eventsList=> {
-
+            
             this.setState({ events: eventsList });
 
         });
