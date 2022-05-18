@@ -19,7 +19,7 @@
     }
     EventList() {
         $.getJSON('https://assos.utc.fr/api/v1/assos')
-          .then(({ results }) => this.setState({ person: results }));
+          .then(({ results }) => this.setState({ events: results }));
     }
 
     render() {
