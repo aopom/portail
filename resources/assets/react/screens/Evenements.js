@@ -15,16 +15,18 @@
         this.state = {events: []}; /* Petit preuve pour eviter redux */
     }
     componentDidMount() {
-        this.EventList();
-    }
-    EventList() {
-        $.getJSON('https://assos.utc.fr/api/v1/assos')
-          .then(({ results }) => this.setState({ events: results }));
+        fetch('https://assos.utc.fr/api/v1/assos')
+        .then((response) => response.json())
+        .then(eventsList=> {
+
+            this.setState({ events: eventsList });
+
+        });
     }
 
     render() {
        
-        const events = this.state.events.map((item, i) => (
+        const events = this.state.events.map((item) => (
             <div>
               <h1>{ item.name }</h1>
               <h2>{ item.image }</h2>
