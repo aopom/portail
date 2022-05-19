@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers\v1\Mobilizon;
 use GuzzleHttp\Client;
+use App\Http\Controllers\v1\Controller;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 
-class Events {
+class Events extends Controller{
+    
     public function index(Request $request): JsonResponse{
 
         $client = new GuzzleHttp\Client();
