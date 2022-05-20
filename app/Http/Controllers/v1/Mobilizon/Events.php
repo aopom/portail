@@ -64,8 +64,9 @@ class Events extends Controller{
         try {
         
             $results = $client->runQuery($gql, true);
-            
-            return response()->json($results);;
+            echo $results;
+            return response()->json($results);
+
         }catch (QueryException $exception) {
             print_r($exception->getErrorDetails());
             exit;
