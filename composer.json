@@ -20,6 +20,7 @@
         "doctrine/dbal": "^2.6",
         "encore/laravel-admin": "^1.7",
         "fideloper/proxy": "~4.0",
+        "gmostafa/php-graphql-client": "^1.13",
         "grimzy/laravel-mysql-spatial": "^2.1",
         "ixudra/curl": "^6.16",
         "laravel-admin-ext/chartjs": "^1.0",
@@ -41,7 +42,6 @@
         "nunomaduro/collision": "3.0.*",
         "phpunit/phpunit": "~8.0",
         "squizlabs/php_codesniffer": "3.*",
-        "symfony/thanks": "^1.0",
         "nunomaduro/larastan": "^0.3.17",
         "phpmd/phpmd": "^2.6"
     },
