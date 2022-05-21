@@ -18,7 +18,7 @@
         fetch('/api/v1/eventsMobilizon')
         .then((response) => response.json())
         .then(eventsList=> {
-            
+            console.log(eventsList)
             this.setState({ events: eventsList });
 
         });
@@ -28,7 +28,7 @@
        
         const events = this.state.events.map((item) => (
             <div>
-              <h1>{ item.elements }</h1>
+              <h1>{ item }</h1>
             </div>
           ));
       
