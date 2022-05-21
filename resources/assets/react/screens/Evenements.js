@@ -18,7 +18,7 @@
         fetch('/api/v1/eventsMobilizon')
         .then((response) => response.json())
         .then(eventsList=> {
-
+          console.log(eventsList);
           this.setState({ events: JSON.parse(eventsList) });
 
         });
