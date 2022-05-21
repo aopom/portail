@@ -19,7 +19,7 @@
         .then((response) => response.json())
         .then(eventsList=> {
           console.log(eventsList);
-          this.setState({ events: JSON.parse(eventsList) });
+          this.setState({ events: eventsList });
 
         });
     }
@@ -34,7 +34,7 @@
       
           return (
             <div id="layout-content" className="layout-content-wrapper">
-              <div className="panel-list">{ events }</div>
+              <div className="panel-list">{ events.title }</div>
             </div>
           );
      }
