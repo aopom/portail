@@ -9,7 +9,7 @@ use GraphQL\Client;
 
 class Events extends Controller{
 
-    public function index(Request $request){
+    public function index(){
 
         try{
             $client = new Client(
