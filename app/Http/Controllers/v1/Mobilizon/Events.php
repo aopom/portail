@@ -8,7 +8,7 @@ use GraphQL\Query;
 use GraphQL\Client;
 
 class Events extends Controller{
-    
+
     public function index(Request $request){
 
         try{
@@ -65,7 +65,7 @@ class Events extends Controller{
         
             $results = $client->runQuery($gql, true);
             print_r($results->getData()['searchEvents']);
-            return $results->getData()['searchEvents'];
+            return response()->json($results->getData()['searchEvents']);
 
         }catch (QueryException $exception) {
             print_r($exception->getErrorDetails());
