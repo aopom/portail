@@ -64,8 +64,8 @@ class Events extends Controller{
         try {
         
             $results = $client->runQuery($gql, true);
-            echo $results;
-            return $results;
+            print_r($results->getData()['searchEvents']);
+            return $results->getData()['searchEvents'];
 
         }catch (QueryException $exception) {
             print_r($exception->getErrorDetails());
