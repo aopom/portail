@@ -15,7 +15,7 @@
         this.state = {events: []}; /* Petit preuve pour eviter redux */
     }
     componentDidMount() {
-        fetch('/api/v1/assos')
+        fetch('/api/v1/eventsMobilizon')
         .then((response) => response.json())
         .then(eventsList=> {
             
@@ -28,8 +28,7 @@
        
         const events = this.state.events.map((item) => (
             <div>
-              <h1>{ item.name }</h1>
-              <h2>{ item.image }</h2>
+              <h1>{ item.elements }</h1>
             </div>
           ));
       
