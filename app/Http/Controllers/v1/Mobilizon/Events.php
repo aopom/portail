@@ -9,7 +9,7 @@ use GraphQL\Client;
 
 class Events extends Controller{
     
-    public function index(Request $request): JsonResponse{
+    public function index(Request $request){
 
         try{
             $client = new Client(
@@ -65,7 +65,7 @@ class Events extends Controller{
         
             $results = $client->runQuery($gql, true);
             echo $results;
-            return response()->json($results);
+            return $results;
 
         }catch (QueryException $exception) {
             print_r($exception->getErrorDetails());

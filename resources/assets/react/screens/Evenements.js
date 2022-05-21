@@ -15,7 +15,7 @@
         this.state = {events: []}; /* Petit preuve pour eviter redux */
     }
     componentDidMount() {
-        fetch('https://assos.utc.fr/api/v1/assos')
+        fetch('/api/v1/assos')
         .then((response) => response.json())
         .then(eventsList=> {
             
