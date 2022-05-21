@@ -28,13 +28,13 @@
        
         const events = this.state.events.map((item) => (
             <div>
-              <h1>{ item }</h1>
+              <h1>{ item.title }</h1>
             </div>
           ));
       
           return (
             <div id="layout-content" className="layout-content-wrapper">
-              <div className="panel-list">{ events.title }</div>
+              <div className="panel-list">{ events }</div>
             </div>
           );
      }
