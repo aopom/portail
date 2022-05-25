@@ -43,7 +43,7 @@
           return (
             <div id="layout-content" className="layout-content-wrapper">
               <div className="panel-list">{ events }</div> 
-              <BigCalendar
+              <BigCalendar 
                 localizer={localizer}
                 events= { [
                     { 
@@ -59,7 +59,7 @@
               
                 step ={60}
                 defaultDate= {new Date()}			
-
+                style={{ height: 500 }}
 
              />
             </div>
