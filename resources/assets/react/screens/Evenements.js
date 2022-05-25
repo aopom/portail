@@ -33,8 +33,8 @@
 
     render() {
        
-        const events = this.state.events.map((item) => (
-            <div>
+        const events = this.state.events.map((item, i) => (
+            <div key={i}>
               <h1>{ item.title } { item.organizerActor.name }</h1>
             </div>
           ));
@@ -43,25 +43,25 @@
           return (
             <div id="layout-content" className="layout-content-wrapper">
               <div className="panel-list">{ events }</div> 
-	    <BigCalendar
-			localizer={localizer}
-			events= { [
-					{ 
-						"id": 0,
-						"title": 'Titre essai',
-						"start": new Date(2022,5,24,13,13,13),
-						"end": new Date(2022,5,25,13,13,13),
-						
-					},
+              <BigCalendar
+                localizer={localizer}
+                events= { [
+                    { 
+                      "id": 0,
+                      "title": 'Titre essai',
+                      "start": new Date(2022,5,24,13,13,13),
+                      "end": new Date(2022,5,25,13,13,13),
+                      
+                    },
 
 
-			     ]	}
-		
-			step ={60}
-			defaultDate= {new Date()}			
+                    ]	}
+              
+                step ={60}
+                defaultDate= {new Date()}			
 
 
-/>
+             />
             </div>
           );
      }
