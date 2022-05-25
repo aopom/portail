@@ -2,7 +2,7 @@
  * Displays the association calendars.
  *
  * @author Andrea Chávez 
- *
+ * @author Emma Falkiewitz
  */
 
  import React from 'react';
@@ -47,10 +47,10 @@
 			localizer={localizer}
 			events= { [
 					{ 
-						id: 0,
-						title: 'Titre essai',
-						start: new Date(2022,5,24,13,13,13),
-						end: new Date(2022,5,25,13,13,13),
+						"id": 0,
+						"title": 'Titre essai',
+						"start": new Date(2022,5,24,13,13,13),
+						"end": new Date(2022,5,25,13,13,13),
 						
 					},
 
