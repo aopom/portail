@@ -32,16 +32,16 @@
 
 
     render() {
-        /*
+       
         const events = this.state.events.map((item, i) => (
             <div key={i}>
               <h1>{ item.title } { item.organizerActor.name }</h1>
             </div>
           ));
-          */
+
       
           return (
-            <div  className="container">
+            <div id="layout-content" className="layout-content-wrapper">
               <div className="panel-list">{ events }</div> 
               <BigCalendar 
                 localizer={localizer}
