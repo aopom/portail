@@ -55,7 +55,7 @@
               <div className="panel-list">{ events }</div> 
               <BigCalendar 
                 localizer={localizer}
-                events= {this.newEvents}
+                events= {this.state.newEvents}
                 step ={60}
                 defaultDate= {new Date()}			
                 style={{ height: 500 }}
