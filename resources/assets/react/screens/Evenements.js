@@ -19,8 +19,7 @@
         super(props);
     
         this.state = {events: []}; /* Petit preuve pour eviter redux */
-        this.state = {newsEvents: []}; /* Petit preuve pour eviter redux */
-
+        this.state = {newsEvents: []};
 
     }
     componentDidMount() {
@@ -28,13 +27,14 @@
         .then((response) => response.json())
         .then(eventsList=> {
           this.setState({ events: eventsList });
-
+          
+          console.log(this.events)
           const newEvents = this.state.events.map(function(item) {
             return {title: item.title, start : new Date(item.beginsOn), end : new Date(item.endsOn)}    
           });
 
           this.setState({newEvents: newEvents});
-          console.log(newEvents);
+          console.log(this.newEvents);
 
         });
     }
@@ -45,28 +45,16 @@
        
         const events = this.state.newsEvents.map((item, i) => (
             <div key={i}>
-              <h1>{ item.title } { item.start }</h1>
+              <h1>{ item.title }</h1>
             </div>
           ));
-
       
           return (
             <div id="layout-content" className="layout-content-wrapper">
               <div className="panel-list">{ events }</div> 
               <BigCalendar 
                 localizer={localizer}
-                events= { [
-                    { 
-                      "id": 0,
-                      "title": 'Titre essai',
-                      "start": new Date(2022,5,24,13,13,13),
-                      "end": new Date(2022,5,25,13,13,13),
-                      
-                    },
-
-
-                    ]	}
-              
+                events= {this.newEvents}
                 step ={60}
                 defaultDate= {new Date()}			
                 style={{ height: 500 }}
