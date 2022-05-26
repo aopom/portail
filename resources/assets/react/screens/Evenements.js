@@ -40,21 +40,16 @@
     
 
     render() {
-       
-        const events = this.state.newEvents.map((item, i) => (
-            <div key={i}>
-              <h1>{ item.title }</h1>
-            </div>
-          ));
-      
           return (
+
             <div style={{margin:50}}>
+              <h1>Calendrier générale des évènements</h1>
               <BigCalendar 
                 localizer={localizer}
                 events= {this.state.newEvents}
                 step ={60}
                 defaultDate= {new Date()}			
-                style={{ height: 500 }}
+                style={{ height: 700 }}
 
               />
             </div>
