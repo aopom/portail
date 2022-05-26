@@ -28,7 +28,6 @@
         .then(eventsList=> {
 
           this.setState({ events: eventsList });
-
           const newEventsList = this.state.events.map(function(item) {
             return {title: item.title, start : new Date(item.beginsOn), end : new Date(item.endsOn)}    
           });
@@ -38,10 +37,18 @@
         });
     }
 
+    
+
     render() {
+       
+        const events = this.state.newEvents.map((item, i) => (
+            <div key={i}>
+              <h1>{ item.title }</h1>
+            </div>
+          ));
+      
           return (
-            <div className="container Calendar">
-              <div className="panel-list">{ events }</div> 
+            <div style={{margin:50}}>
               <BigCalendar 
                 localizer={localizer}
                 events= {this.state.newEvents}
@@ -49,7 +56,7 @@
                 defaultDate= {new Date()}			
                 style={{ height: 500 }}
 
-             />
+              />
             </div>
           );
      }
