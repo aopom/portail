@@ -18,7 +18,7 @@
     constructor(props) {
         super(props);
     
-        this.state = {events: []}; /* Petit preuve pour eviter redux */
+        this.state = {events: []}; 
         this.state = {newsEvents: []};
 
     }
@@ -27,14 +27,15 @@
         .then((response) => response.json())
         .then(eventsList=> {
           this.setState({ events: eventsList });
-          
-          console.log(this.events)
-          const newEvents = this.state.events.map(function(item) {
+
+          console.log(events);
+
+          const newEventsList = this.state.events.map(function(item) {
             return {title: item.title, start : new Date(item.beginsOn), end : new Date(item.endsOn)}    
           });
 
-          this.setState({newEvents: newEvents});
-          console.log(this.newEvents);
+          this.setState({newEvents: newEventsList});
+          console.log(newEvents);
 
         });
     }
