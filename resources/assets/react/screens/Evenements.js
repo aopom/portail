@@ -19,7 +19,7 @@
         super(props);
     
         this.state = {events: []}; 
-        this.state = {newsEvents: []};
+        this.state = {newEvents: []};
 
     }
     componentDidMount() {
@@ -44,7 +44,7 @@
 
     render() {
        
-        const events = this.state.newsEvents.map((item, i) => (
+        const events = this.state.newEvents.map((item, i) => (
             <div key={i}>
               <h1>{ item.title }</h1>
             </div>
