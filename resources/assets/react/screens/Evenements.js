@@ -29,15 +29,13 @@
 
           this.setState({ events: eventsList });
           const newEventsList = this.state.events.map(function(item) {
-            return {title: item.title, start : new Date(item.beginsOn), end : new Date(item.endsOn)}    
+            return {title: item.title, start : new Date(item.beginsOn), end : new Date(item.endsOn), url: item.url}    
           });
 
           this.setState({newEvents: newEventsList});
 
         });
     }
-
-    
 
     render() {
           return (
@@ -50,7 +48,7 @@
                 step ={60}
                 defaultDate= {new Date()}			
                 style={{ height: 700 }}
-
+                onSelectEvent={event => alert(event.url)}
               />
             </div>
           );
