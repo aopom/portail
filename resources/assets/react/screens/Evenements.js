@@ -19,6 +19,7 @@
         super(props);
     
         this.state = {events: []}; /* Petit preuve pour eviter redux */
+
     }
     componentDidMount() {
         fetch('/api/v1/eventsMobilizon')
@@ -26,14 +27,15 @@
         .then(eventsList=> {
           console.log(eventsList);
           this.setState({ events: eventsList });
-          this.transformEvents()
+          newEvents = this.events.map(function(item) {
+            return {start : item.beginsOn}    
+          })
+          console.log(newEvents);
+
         });
     }
-    transformEvents(){
-      this.state.events.map((item, i) => (
-        console.log(item)
-      ));
-    }
+
+    
 
     render() {
        
