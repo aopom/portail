@@ -26,34 +26,21 @@
         fetch('/api/v1/eventsMobilizon')
         .then((response) => response.json())
         .then(eventsList=> {
-          console.log(eventsList);
 
           this.setState({ events: eventsList });
-
 
           const newEventsList = this.state.events.map(function(item) {
             return {title: item.title, start : new Date(item.beginsOn), end : new Date(item.endsOn)}    
           });
-          console.log(newEventsList);
 
           this.setState({newEvents: newEventsList});
-          console.log(newEvents);
 
         });
     }
 
-    
-
     render() {
-       
-        const events = this.state.newEvents.map((item, i) => (
-            <div key={i}>
-              <h1>{ item.title }</h1>
-            </div>
-          ));
-      
           return (
-            <div id="layout-content" className="layout-content-wrapper">
+            <div className="container Calendar">
               <div className="panel-list">{ events }</div> 
               <BigCalendar 
                 localizer={localizer}
