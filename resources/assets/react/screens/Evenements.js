@@ -26,13 +26,15 @@
         fetch('/api/v1/eventsMobilizon')
         .then((response) => response.json())
         .then(eventsList=> {
+          console.log(eventsList);
+
           this.setState({ events: eventsList });
 
-          console.log(events);
 
           const newEventsList = this.state.events.map(function(item) {
             return {title: item.title, start : new Date(item.beginsOn), end : new Date(item.endsOn)}    
           });
+          console.log(newEventsList);
 
           this.setState({newEvents: newEventsList});
           console.log(newEvents);
