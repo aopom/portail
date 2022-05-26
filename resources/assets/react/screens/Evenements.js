@@ -48,7 +48,7 @@
                 step ={60}
                 defaultDate= {new Date()}			
                 style={{ height: 700 }}
-                onSelectEvent={event => alert(event.url)}
+                onSelectEvent={event => window.open(event.url, "_blank")}
               />
             </div>
           );
