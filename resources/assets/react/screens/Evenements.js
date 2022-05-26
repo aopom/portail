@@ -30,9 +30,9 @@
         });
     }
     transformEvents(){
-        for(var item of events){
-          console.log(item);
-        }
+      this.state.events.map((item, i) => (
+        console.log(item)
+      ));
     }
 
     render() {
