@@ -27,8 +27,8 @@
         .then(eventsList=> {
           console.log(eventsList);
           this.setState({ events: eventsList });
-          newEvents = this.events.map(function(item) {
-            return {start : item.beginsOn}    
+          const newEvents = this.events.map(function(item) {
+            return {start : item.beginsOn, end : item.endsOn}    
           })
           console.log(newEvents);
 
