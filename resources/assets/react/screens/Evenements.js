@@ -26,10 +26,14 @@
         .then(eventsList=> {
           console.log(eventsList);
           this.setState({ events: eventsList });
-
+          this.transformEvents()
         });
     }
-
+    transformEvents(){
+        for(var item of events){
+          console.log(item);
+        }
+    }
 
     render() {
        
