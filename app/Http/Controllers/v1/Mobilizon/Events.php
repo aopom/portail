@@ -98,7 +98,7 @@ class Events extends Controller{
             print_r( $exception->getErrorDetails());
         }
     
-        $gql = (new Query('groups'))
+        $gql = (new Query('group'))
             ->setVariables([new Variable('preferredUsername', 'String')])
             ->setSelectionSet([
                 (new Query('organizedEvents'))->setSelectionSet([
