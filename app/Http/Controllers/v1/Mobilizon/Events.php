@@ -43,29 +43,10 @@ class Events extends Controller{
                             'description',
                             'beginsOn',
                             'endsOn',
-                            (new Query('physicalAddress'))
-                                ->setSelectionSet(
-                                    [
-                                        'country',
-                                        'street',
-                                        'geom',
-                                        'postalCode',
-                                        'locality',
-                                        'region',
-                                    ]
-                                ),
-                        (new Query('picture'))
-                                ->setSelectionSet(
-                                    [
-                                        'url'
-                                    ]
-                                ),
-                            (new Query ('organizerActor'))
-                                -> setSelectionSet(
-                                    [
-                                        'name'
-                                    ]
-                                )
+                            (new Query ('organizerActor'))-> setSelectionSet([
+                                'name'
+                            ]
+                            )
                         ]
                     )
                 ]
@@ -116,17 +97,6 @@ class Events extends Controller{
                             'description',
                             'beginsOn',
                             'endsOn',
-                            (new Query('physicalAddress'))->setSelectionSet([
-                                'country',
-                                'street',
-                                'geom',
-                                'postalCode',
-                                'locality',
-                                'region',
-                            ]),
-                            (new Query('picture'))->setSelectionSet([
-                                'url'
-                            ]),
                             (new Query ('organizerActor'))-> setSelectionSet([
                                 'name'
                             ])
@@ -135,7 +105,9 @@ class Events extends Controller{
                 ]
             );
         try {
-            $preferredUsername = "bde";
+            $preferredUsername = "bde";//Il faudra transformer le nom, par ex : La com => la_com (selon Mobilizon)
+            //Parcontre il restent des erreurs pour la réponse JSON, jsp pq, si j'ai fait la même chose qu'au
+
             $results = $client->runQuery($gql, true, ['preferredUsername' => $preferredUsername] );
 
             print_r($results->getData()['group']['organizedEvents']['elements']);
