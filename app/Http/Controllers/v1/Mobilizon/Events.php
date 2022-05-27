@@ -92,7 +92,7 @@ class Events extends Controller{
     public function show(Request $request, string $shortname): JsonResponse{
         try{
             $client = new Client(
-                    'https://mobitest.ppom.me/graphiql'
+                'https://mobitest.ppom.me/graphiql'
             );
         }catch(ConnectExeption $exception){
             print_r( $exception->getErrorDetails());
@@ -100,6 +100,8 @@ class Events extends Controller{
     
         $gql = (new Query('group'))
             ->setVariables([new Variable('preferredUsername', 'String')])
+            ->setArguments(['preferredUsername' => '$preferredUsername'])
+
             ->setSelectionSet([
                 (new Query('organizedEvents'))->setSelectionSet([
                     (new Query('elements'))->setSelectionSet([
@@ -133,7 +135,7 @@ class Events extends Controller{
         try {
             $preferredUsername = "bde";
             $results = $client->runQuery($gql, true, ['preferredUsername' => $preferredUsername,] );
-            
+
             print_r($results->getData()['group']['organizedEvents']['elements']);
 
             return response()->json($results->getData()['group']['organizedEvents']['elements']);
