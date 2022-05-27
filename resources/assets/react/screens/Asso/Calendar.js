@@ -102,7 +102,7 @@ class AssoCalendar extends React.Component {
 	}
 
 	render() {
-		const { calendars, fetched } = this.props;
+		const { calendars, fetched, asso } = this.props;
 		const { openModal, modalData, reloadCalendar } = this.state;
 
 		this.state.reloadCalendar = null;
@@ -133,6 +133,7 @@ class AssoCalendar extends React.Component {
 					reloadCalendar={reloadCalendar}
 					scrollToTime={new Date(null, null, null, 8)}
 					selectable
+					asso={asso}
 				/>
 			</div>
 		);
