@@ -613,7 +613,7 @@ class AssoScreen extends React.Component {
 							/>
 						)}
 					/>
-					<Route exact path={`${match.url}/events`} render={() => <AssoCalendar asso={asso} shortname={asso.shortname} />} />
+					<Route exact path={`${match.url}/events`} render={() => <AssoCalendar asso={[asso, asso.shortname]}/>} />
 					<Route exact path={`${match.url}/articles`} render={() => <ArticleList asso={asso} />} />
 					<ConditionalRoute
 						path={`${match.url}/members`}
