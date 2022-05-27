@@ -9,7 +9,7 @@ use GraphQL\Client;
 use GraphQL\Variable;
 
 
-class Events extends Controller{
+class EventsAsso extends Controller{
     public function __construct()
     {
         $this->middleware(
