@@ -133,6 +133,7 @@ class AssoCalendar extends React.Component {
 					reloadCalendar={reloadCalendar}
 					scrollToTime={new Date(null, null, null, 8)}
 					selectable
+					assoname={shortname}
 				/>
 			</div>
 		);
