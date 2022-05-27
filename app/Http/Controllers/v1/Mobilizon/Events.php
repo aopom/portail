@@ -99,7 +99,7 @@ class Events extends Controller{
         }
     
         $gql = (new Query('group'))
-            ->setVariables([new Variable('preferredUsername', 'String')])
+            ->setVariables([new Variable('preferredUsername', 'String!')])
             ->setArguments(['preferredUsername' => '$preferredUsername'])
 
             ->setSelectionSet([
