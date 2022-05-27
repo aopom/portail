@@ -27,7 +27,7 @@ import EventForm from '../../components/Calendar/Form';
 class AssoCalendar extends React.Component {
 	constructor(props) {
 		super(props);
-
+		console.log(this.props)
 		this.state = {
 			openModal: false,
 		};
@@ -133,7 +133,6 @@ class AssoCalendar extends React.Component {
 					reloadCalendar={reloadCalendar}
 					scrollToTime={new Date(null, null, null, 8)}
 					selectable
-					assoname={shortname}
 				/>
 			</div>
 		);
