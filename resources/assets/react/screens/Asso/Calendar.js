@@ -27,7 +27,6 @@ import EventForm from '../../components/Calendar/Form';
 class AssoCalendar extends React.Component {
 	constructor(props) {
 		super(props);
-		console.log(this.props)
 		this.state = {
 			openModal: false,
 		};
