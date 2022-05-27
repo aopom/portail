@@ -266,7 +266,6 @@ export default Calendar;
           return (
 
             <div style={{margin:50}}>
-              <h1 style={{marginBottom: 20}}>Calendrier générale des évènements</h1>
               <BigCalendar 
                 localizer={localizer}
                 events= {this.state.newEvents}
