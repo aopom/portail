@@ -138,7 +138,7 @@ class Events extends Controller{
             $preferredUsername = "bde";
             $results = $client->runQuery($gql, true, ['preferredUsername' => $preferredUsername] );
 
-            print_r(json_encode($results->getData()['group']['organizedEvents']['elements']));
+            print_r($results->getData()['group']['organizedEvents']['elements']);
 
            // return response()->json_encode($results->getData()['group']['organizedEvents']['elements']);
         }catch (QueryException $exception) {
