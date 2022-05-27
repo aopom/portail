@@ -18,22 +18,30 @@ class Events extends Controller{
         );
        
     }
-    public function index(Request $request): JsonResponse{
-
+  
+    /**
+     * Show a calendar.
+     *
+     * @param Request	$request
+     * @param string 	$shortname
+     * @return JsonResponse
+     */
+    public function index(Request $request, string $shortname): JsonResponse{
         try{
             $client = new Client(
-                    'https://mobitest.ppom.me/graphiql'
+                'https://mobitest.ppom.me/graphiql'
             );
         }catch(ConnectExeption $exception){
             print_r( $exception->getErrorDetails());
         }
     
-        $gql = (new Query('searchEvents'))
-            ->setSelectionSet(
-                [
-                (new Query('elements'))
-                    ->setSelectionSet(
-                        [
+        $gql = (new Query('group'))
+            ->setVariables([new Variable('preferredUsername', 'String', true)])
+            ->setArguments(['preferredUsername' => '$preferredUsername'])
+
+            ->setSelectionSet([
+                (new Query('organizedEvents'))->setSelectionSet([
+                    (new Query('elements'))->setSelectionSet([
                             'id',
                             'status',
                             'category',
@@ -45,17 +53,20 @@ class Events extends Controller{
                             'endsOn',
                             (new Query ('organizerActor'))-> setSelectionSet([
                                 'name'
-                            ]
-                            )
-                        ]
-                    )
+                            ])
+                            ])
+                        ])
                 ]
             );
         try {
-        
-            $results = $client->runQuery($gql, true);
+            $preferredUsername = "bde";//Il faudra transformer le nom, par ex : La com => la_com (selon Mobilizon)
+            //Parcontre il restent des erreurs pour la réponse JSON, jsp pq, si j'ai fait la même chose qu'au
 
-            return response()->json($results->getData()['searchEvents']['elements']);
+            $results = $client->runQuery($gql, true, ['preferredUsername' => $preferredUsername] );
+
+            print_r($results->getData()['group']['organizedEvents']['elements']);
+
+           return response()->json($results->getData()['group']['organizedEvents']['elements']);
 
         }catch (QueryException $exception) {
             print_r($exception->getErrorDetails());
