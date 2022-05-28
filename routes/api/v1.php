@@ -164,6 +164,6 @@ Route::group([], function () {
         'visibilities' => 'Visibility\VisibilityController',
         'semesters' => 'Semester\SemesterController',
         'eventsMobilizon' => 'Mobilizon\Events',
-        'eventsMobilizon/{shortname}/' => 'Mobilizon\EventsAsso',
+        'eventsMobilizon/{shortname}' => 'Mobilizon\EventsAsso',
     ]);
 });
