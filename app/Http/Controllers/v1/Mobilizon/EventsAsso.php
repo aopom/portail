@@ -19,13 +19,6 @@ class EventsAsso extends Controller{
        
     }
   
-    /**
-     * Show a calendar.
-     *
-     * @param Request	$request
-     * @param string 	$shortname
-     * @return JsonResponse
-     */
     public function index(Request $request, string $shortname): JsonResponse{
         try{
             $client = new Client(
@@ -66,7 +59,7 @@ class EventsAsso extends Controller{
 
             print_r($results->getData()['group']['organizedEvents']['elements']);
 
-           return response()->json($results->getData()['group']['organizedEvents']['elements']);
+            //return response()->json($results->getData()['group']['organizedEvents']['elements']);
 
         }catch (QueryException $exception) {
             print_r($exception->getErrorDetails());
