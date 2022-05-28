@@ -248,7 +248,7 @@ export default Calendar;
 
     }
     componentDidMount() {
-        fetch('/api/v1/eventsMobilizonAsso/'+this.props.asso.shortname)
+        fetch('/api/v1/eventsMobilizon'+this.props.asso.shortname)
         .then((response) => response.json())
         .then(eventsList=> {
 

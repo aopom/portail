@@ -54,8 +54,56 @@ class Events extends Controller{
         try {
         
             $results = $client->runQuery($gql, true);
-            print_r($results->getData()['searchEvents']['elements']);
+            print_r(json($results->getData()['searchEvents']['elements']));
             return response()->json($results->getData()['searchEvents']['elements']);
+
+        }catch (QueryException $exception) {
+            print_r($exception->getErrorDetails());
+            exit;
+        }
+    
+    }
+    public function show(Request $request, string $shortname): JsonResponse{
+        try{
+            $client = new Client(
+                'https://mobitest.ppom.me/graphiql'
+            );
+        }catch(ConnectExeption $exception){
+            print_r( $exception->getErrorDetails());
+        }
+    
+        $gql = (new Query('group'))
+            ->setVariables([new Variable('preferredUsername', 'String', true)])
+            ->setArguments(['preferredUsername' => '$preferredUsername'])
+
+            ->setSelectionSet([
+                (new Query('organizedEvents'))->setSelectionSet([
+                    (new Query('elements'))->setSelectionSet([
+                            'id',
+                            'status',
+                            'category',
+                            'title',
+                            'url',
+                            'joinOptions',
+                            'description',
+                            'beginsOn',
+                            'endsOn',
+                            (new Query ('organizerActor'))-> setSelectionSet([
+                                'name'
+                            ])
+                            ])
+                        ])
+                ]
+            );
+        try {
+            $preferredUsername = "bde";//Il faudra transformer le nom, par ex : La com => la_com (selon Mobilizon)
+            //Parcontre il restent des erreurs pour la réponse JSON, jsp pq, si j'ai fait la même chose qu'au
+
+            $results = $client->runQuery($gql, true, ['preferredUsername' => $preferredUsername] );
+
+            print_r($results->getData()['group']['organizedEvents']['elements']);
+
+            //return response()->json($results->getData()['group']['organizedEvents']['elements']);
 
         }catch (QueryException $exception) {
             print_r($exception->getErrorDetails());
