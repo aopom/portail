@@ -18,7 +18,7 @@ class Events extends Controller{
         );
        
     }
-    public function index(Request $request){
+    public function index(Request $request): JsonResponse{
 
         try{
             $client = new Client(
@@ -54,8 +54,8 @@ class Events extends Controller{
         try {
         
             $results = $client->runQuery($gql, true);
-            print_r(response()->json($results->getData()['searchEvents']['elements']));
-           // return response()->json($results->getData()['searchEvents']['elements']);
+            //print_r(response()->json($results->getData()['searchEvents']['elements']));
+            return response()->json($results->getData()['searchEvents']['elements']);
 
         }catch (QueryException $exception) {
             print_r($exception->getErrorDetails());
@@ -63,8 +63,15 @@ class Events extends Controller{
         }
     
     }
+     /**
+     * Show a calendar event.
+     *
+     * @param Request	$request
+     * @param string 	$shortname
+     * @return JsonResponse
+     */
 
-    public function show(Request $request, string $shortname){
+    public function show(Request $request, string $shortname): JsonResponse{
         try{
             $client = new Client(
                 'https://mobitest.ppom.me/graphiql'
@@ -102,9 +109,9 @@ class Events extends Controller{
 
             $results = $client->runQuery($gql, true, ['preferredUsername' => $preferredUsername]);
 
-            print_r(response()->json($results->getData()['group']['organizedEvents']['elements']));
+            //print_r(response()->json($results->getData()['group']['organizedEvents']['elements']));
 
-            //return response()->json($results->getData()['group']['organizedEvents']['elements']);
+            return response()->json($results->getData()['group']['organizedEvents']['elements'], 200);
 
         }catch (QueryException $exception) {
             print_r($exception->getErrorDetails());
