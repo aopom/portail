@@ -71,7 +71,7 @@ class Events extends Controller{
      * @return JsonResponse
      */
 
-    public function show(Request $request, string $shortname){
+    public function show(Request $request, string $shortname): JsonResponse{
         try{
             $client = new Client(
                 'https://mobitest.ppom.me/graphiql'
@@ -105,11 +105,10 @@ class Events extends Controller{
             );
         try {
             $preferredUsername = "bde";
+
             $results = $client->runQuery($gql, true, ['preferredUsername' => $preferredUsername]);
 
-            print_r($shortname);
-
-            //return response()->json($results->getData()['group']['organizedEvents']['elements'], 200);
+            return response()->json($results->getData()['group']['organizedEvents']['elements'], 200);
 
         }catch (QueryException $exception) {
             print_r($exception->getErrorDetails());
