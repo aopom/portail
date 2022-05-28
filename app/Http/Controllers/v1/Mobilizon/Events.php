@@ -104,12 +104,10 @@ class Events extends Controller{
                 ]
             );
         try {
-            $preferredUsername = "bde";//Il faudra transformer le nom, par ex : La com => la_com (selon Mobilizon)
-            //Parcontre il restent des erreurs pour la réponse JSON, jsp pq, si j'ai fait la même chose qu'au dessus 
-
+            $preferredUsername = "bde";
             $results = $client->runQuery($gql, true, ['preferredUsername' => $preferredUsername]);
 
-            //print_r(response()->json($results->getData()['group']['organizedEvents']['elements']));
+            print_r($shortname);
 
             return response()->json($results->getData()['group']['organizedEvents']['elements'], 200);
 
