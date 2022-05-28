@@ -9,8 +9,10 @@
  import BigCalendar from 'react-big-calendar';
  import moment from 'moment'; 
  import Views from 'react-big-calendar';
+ import { Button } from 'reactstrap';
 
- const localizer = BigCalendar .momentLocalizer(moment); 
+
+ const localizer = BigCalendar.momentLocalizer(moment); 
 
  let  views = Object.keys(Views).map((k) => Views[k]);
 
@@ -47,10 +49,10 @@
 
             <div style={{margin:50}}>
               <h1 style={{marginBottom: 20}}>Calendrier générale des évènements</h1>
-              <Button color="primary" outline onClick={this.loadEventsUser.bind(this)} className="ml-auto">
+              <Button color="primary" outline onClick={this.loadEventsUser.bind(this)} >
                 Calendrier de mes assos
 					    </Button>
-              <Button color="primary" outline onClick={this.loadGeneralCalendar.bind(this)} className="ml-auto">
+              <Button color="primary" outline onClick={this.loadGeneralCalendar.bind(this)} >
                 Calendrier de générale
 					    </Button>
               <BigCalendar 
