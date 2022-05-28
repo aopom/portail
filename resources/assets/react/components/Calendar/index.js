@@ -242,14 +242,27 @@ export default Calendar;
  class Calendar extends React.Component {
     constructor(props) {
         super(props);
-		console.log((this.props.asso.shortname).replace(" ", "_").replace("/,|-/g", "").toLowerCase())
+		console.log((this.props.asso.shortname)
+				.replaceAll(" ", "_")
+				.replaceAll(".", "")
+				.replaceAll("-", "")
+				.replaceAll(",", "")
+				.replaceAll("'", "")
+				.toLowerCase())
         this.state = {events: []}; 
         this.state = {newEvents: []};
 
     }
     componentDidMount() {
         fetch('/api/v1/eventsMobilizon/'+ 
-			(this.props.asso.shortname).replace(" ", "_").replace("/,|-/g", "").toLowerCase())
+			(this.props.asso.shortname)
+			.replaceAll(" ", "_")
+			.replaceAll(".", "")
+			.replaceAll("-", "")
+			.replaceAll(",", "")
+			.replaceAll("'", "")
+			.toLowerCase()
+			)
         .then((response) => response.json())
         .then(eventsList=> {
 
