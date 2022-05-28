@@ -54,7 +54,7 @@ class Events extends Controller{
         try {
         
             $results = $client->runQuery($gql, true);
-
+            print_r($results->getData()['searchEvents']['elements']);
             return response()->json($results->getData()['searchEvents']['elements']);
 
         }catch (QueryException $exception) {
@@ -63,7 +63,7 @@ class Events extends Controller{
         }
     
     }
-    public function show(Request $request, string $shortname): JsonResponse{
+    public function show(Request $request, string $shortname){
         try{
             $client = new Client(
                 'https://mobitest.ppom.me/graphiql'
@@ -97,7 +97,7 @@ class Events extends Controller{
             );
         try {
             $preferredUsername = "bde";//Il faudra transformer le nom, par ex : La com => la_com (selon Mobilizon)
-            //Parcontre il restent des erreurs pour la réponse JSON, jsp pq, si j'ai fait la même chose qu'au
+            //Parcontre il restent des erreurs pour la réponse JSON, jsp pq, si j'ai fait la même chose qu'au dessus 
 
             $results = $client->runQuery($gql, true, ['preferredUsername' => $preferredUsername] );
 
