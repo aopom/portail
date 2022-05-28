@@ -54,7 +54,7 @@ class Events extends Controller{
         try {
         
             $results = $client->runQuery($gql, true);
-            print_r($results->getData()['searchEvents']['elements']);
+            print_r(response()->json($results->getData()['searchEvents']['elements']));
            // return response()->json($results->getData()['searchEvents']['elements']);
 
         }catch (QueryException $exception) {
@@ -63,6 +63,7 @@ class Events extends Controller{
         }
     
     }
+    
     public function show(Request $request, string $shortname){
         try{
             $client = new Client(
