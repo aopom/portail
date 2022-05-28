@@ -18,7 +18,7 @@ class Events extends Controller{
         );
        
     }
-    public function index(Request $request): JsonResponse{
+    public function index(Request $request){
 
         try{
             $client = new Client(
@@ -55,7 +55,7 @@ class Events extends Controller{
         
             $results = $client->runQuery($gql, true);
             print_r($results->getData()['searchEvents']['elements']);
-            return response()->json($results->getData()['searchEvents']['elements']);
+           // return response()->json($results->getData()['searchEvents']['elements']);
 
         }catch (QueryException $exception) {
             print_r($exception->getErrorDetails());
