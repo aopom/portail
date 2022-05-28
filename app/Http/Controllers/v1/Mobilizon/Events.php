@@ -104,7 +104,7 @@ class Events extends Controller{
                 ]
             );
         try {
-            $preferredUsername = "bde";
+            $preferredUsername = $shortname;
 
             $results = $client->runQuery($gql, true, ['preferredUsername' => $preferredUsername]);
 
