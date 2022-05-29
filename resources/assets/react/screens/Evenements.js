@@ -5,27 +5,18 @@
  * @author Emma Falkiewitz
  */
 
- import React from 'react';
- import { connect } from 'react-redux';
- import BigCalendar from 'react-big-calendar';
- import moment from 'moment'; 
- import Views from 'react-big-calendar';
- import { Button } from 'reactstrap';
+import React from 'react';
+import { connect } from 'react-redux';
+import BigCalendar from 'react-big-calendar';
+import moment from 'moment'; 
+import Views from 'react-big-calendar';
+import { Button } from 'reactstrap';
 
+const localizer = BigCalendar.momentLocalizer(moment); 
 
- @connect(store => ({
-   config: store.config,
-   user: store.getData('user'),
-   permissions: store.getData('user/permissions'),
-   isAuthenticated: store.isFetched('user'),
-   assos: store.getData('user/assos'),
- }))
+let  views = Object.keys(Views).map((k) => Views[k]);
 
- const localizer = BigCalendar.momentLocalizer(moment); 
-
- let  views = Object.keys(Views).map((k) => Views[k]);
-
- class EventsCalendar extends React.Component {
+class EventsCalendar extends React.Component {
     constructor(props) {
         super(props);
     
@@ -55,7 +46,7 @@
     loadEventsUser(){
       this.setState({events:[]});
       this.setState({newEvents:[]});
-      fetch('/api/v1/eventsMobilizonAsso')
+      fetch('/api/v1/user')
       .then((response) => response.json())
       .then(eventsList=> {
 
