@@ -12,11 +12,11 @@ use App\Models\Semester;
 use App\Models\Role;
 use App\Exceptions\PortailException;
 use App\Traits\Controller\v1\{
-    HasUsers, HasUserBulkMethods, HasAssos
+    HasAssos
 
 };
 class EventsAssoUser extends Controller{
-    use HasUsers, HasUserBulkMethods, HasAssos;
+    use HasAssos;
 
     /**
      * List user's associations.
