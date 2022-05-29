@@ -6,7 +6,6 @@
  */
 
 import React from 'react';
-import { connect } from 'react-redux';
 import BigCalendar from 'react-big-calendar';
 import moment from 'moment'; 
 import Views from 'react-big-calendar';
@@ -22,8 +21,7 @@ class EventsCalendar extends React.Component {
     
         this.state = {events: []}; 
         this.state = {newEvents: []};
-        console.log(user);
-        console.log(assos);
+       
 
     }
     loadGeneralCalendar(){
