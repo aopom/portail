@@ -20,10 +20,6 @@ let  views = Object.keys(Views).map((k) => Views[k]);
 @connect(store => ({
   config: store.config,
 	user: store.getData('user'),
-	permissions: store.getData('user/permissions'),
-	isAuthenticated: store.isFetched('user'),
-	assos: store.getData('user/assos'),
-	user: store.getData('user'),
 }))
 
 class EventsCalendar extends React.Component {
