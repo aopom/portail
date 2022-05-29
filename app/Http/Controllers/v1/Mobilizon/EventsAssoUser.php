@@ -14,7 +14,7 @@ class EventsAssoUser extends Controller{
     public function __construct()
     {
         $this->middleware(
-            \Scopes::matchOneOfDeepestChildren('user-get-assos-members', 'client-get-assos-members'),
+            \Scopes::allowPublic()->matchOneOfDeepestChildren('user-get-assos-members', 'client-get-assos-members'),
             ['only' => ['index', 'show']]
         );
     }
