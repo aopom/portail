@@ -17,14 +17,6 @@ use App\Traits\Controller\v1\{
 class EventsAssoUser extends Controller{
     use HasUserBulkMethods, HasAssos;
 
-    public function __construct()
-    {
-        $this->middleware(
-            \Scopes::allowPublic()->matchOneOfDeepestChildren('user-get-assos-members'),
-            ['only' => ['index']]
-        );
-    }
-
     /**
      * List user's associations.
      *
