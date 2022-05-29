@@ -60,9 +60,6 @@ class EventsCalendar extends React.Component {
 
     }
     render() {
-        const {user} = this.props;
-        console.log(user);
-
           return (
 
             <div style={{margin:50}}>
