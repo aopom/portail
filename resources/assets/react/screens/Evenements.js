@@ -36,6 +36,7 @@ class EventsCalendar extends React.Component {
       .then(eventsList=> {
 
         this.setState({ events: eventsList });
+
         const newEventsList = this.state.events.map(function(item) {
           return {title: item.title, start : new Date(item.beginsOn), end : new Date(item.endsOn), url: item.url}    
         });
@@ -51,6 +52,11 @@ class EventsCalendar extends React.Component {
       console.log(this.props.assos)
       this.setState({events:[]});
       this.setState({newEvents:[]});
+      const assosList = this.props.assos.map(function(item){
+        console.log(item.shortname);
+        return {asso:item.shortname}
+      });
+      console.log(assosList);
       /*
       fetch('/api/v1/eventsMobilizon/')
       .then((response) => response.json())
