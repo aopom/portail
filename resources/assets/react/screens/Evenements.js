@@ -42,7 +42,7 @@ class EventsCalendar extends React.Component {
         });
 
         this.setState({newEvents: newEventsList});
-
+        console.log(newEventsList);
       });
     }
     componentDidMount() {
@@ -54,7 +54,7 @@ class EventsCalendar extends React.Component {
 
       const eventsAsso = []
 
-      const evts = this.props.assos.map(function(item){
+      this.props.assos.map(function(item){
         fetch('/api/v1/eventsMobilizon/'+(item.shortname)
           .replaceAll(" ", "_")
           .replaceAll(".", "")
@@ -69,11 +69,10 @@ class EventsCalendar extends React.Component {
             return {title: item.title, start : new Date(item.beginsOn), end : new Date(item.endsOn), url: item.url}    
           });
           eventsAsso.push(newEventsList);
-          return {value:newEventsList}
         });        
       });  
       console.log(eventsAsso);
-      console.log(evts);
+    
 
     }
     render() {
