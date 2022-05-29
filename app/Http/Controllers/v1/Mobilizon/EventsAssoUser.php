@@ -24,7 +24,7 @@ class EventsAssoUser extends Controller{
      * @param string  $user_id
      * @return JsonResponse
      */
-    public function index(Request $request, string $user_id=null): JsonResponse
+    public function index(Request $request, string $user_id=null)
     {
         $user = $this->getUser($request, $user_id);
         $choices = $this->getChoices($request, ['joined', 'joining', 'followed']);
@@ -44,9 +44,9 @@ class EventsAssoUser extends Controller{
             $assos = $assos->merge($user->followedAssos()->with('parent')->where('semester_id', $semester->id)->get());
         }
 
-        return response()->json($assos->map(function ($asso) {
-            return $asso->hideData();
-        }), 200);
+        print_r($user);
+        print_r($assos);
+      
     }
 }
 
