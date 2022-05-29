@@ -28,7 +28,8 @@ class EventsCalendar extends React.Component {
         
         this.state = {events: []}; 
         this.state = {newEvents: []};
-        console.log(this.props)
+        this.state = {user: this.props.user}
+     
     }
     loadGeneralCalendar(){
       fetch('/api/v1/eventsMobilizon')
@@ -47,10 +48,12 @@ class EventsCalendar extends React.Component {
     componentDidMount() {
        this.loadGeneralCalendar(); 
     }
-    loadEventsUser(id_user){
+    loadEventsUser(){
+      console.log(user)
+
       this.setState({events:[]});
       this.setState({newEvents:[]});
-      fetch('/api/v1/eventsMobilizonAsso/'+id_user)
+      fetch('/api/v1/eventsMobilizonAsso/'+user.id)
       .then((response) => response.json())
       .then(eventsList=> {
 
