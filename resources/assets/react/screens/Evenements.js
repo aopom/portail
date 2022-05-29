@@ -18,7 +18,6 @@ const localizer = BigCalendar.momentLocalizer(moment);
 let  views = Object.keys(Views).map((k) => Views[k]);
 
 @connect(store => ({
-  config: store.config,
 	user: store.getData('user'),
 }))
 
@@ -28,7 +27,8 @@ class EventsCalendar extends React.Component {
         
         this.state = {events: []}; 
         this.state = {newEvents: []};
-        this.state = {user: this.props.user}
+        console.log(this.props)
+        this.state = {user: this.props}
      
     }
     loadGeneralCalendar(){
