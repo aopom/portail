@@ -69,7 +69,7 @@ class EventsCalendar extends React.Component {
             return {title: item.title, start : new Date(item.beginsOn), end : new Date(item.endsOn), url: item.url}    
           });
     
-          eventsAsso.concat(newEventsList);
+          eventsAsso.push(newEventsList);
          
         });        
       });  
