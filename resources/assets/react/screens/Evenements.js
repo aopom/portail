@@ -18,7 +18,6 @@ const localizer = BigCalendar.momentLocalizer(moment);
 let  views = Object.keys(Views).map((k) => Views[k]);
 
 @connect(store => ({
-	user: store.getData('user'),
   assos: store.getData('user/assos'),
 
 }))
@@ -27,7 +26,6 @@ class EventsCalendar extends React.Component {
     constructor(props) {
         super(props);
         
-        this.state = {events: []}; 
         this.state = {newEvents: []};      
     }
     loadGeneralCalendar(){
@@ -36,14 +34,11 @@ class EventsCalendar extends React.Component {
       .then((response) => response.json())
       .then(eventsList=> {
 
-        this.setState({ events: eventsList });
-
-        const newEventsList = this.state.events.map(function(item) {
+        const newEventsList = eventsList.map(function(item) {
           return {title: item.title, start : new Date(item.beginsOn), end : new Date(item.endsOn), url: item.url}    
         });
 
         this.setState({newEvents: newEventsList});
-        //console.log(newEventsList);
       });
     }
     componentDidMount() {
@@ -52,7 +47,10 @@ class EventsCalendar extends React.Component {
     loadEventsUser(){
      
       const eventsAsso = []
-
+      /* Iteration of all user's assos in order to send the shortname 
+      to the API, in every API call we will be pushing the results into eventsAsso 
+      at the end we set the state of newEvents with eventsAsso
+      */
       this.props.assos.map(function(item){
         fetch('/api/v1/eventsMobilizon/'+(item.shortname)
           .replaceAll(" ", "_")
@@ -69,9 +67,8 @@ class EventsCalendar extends React.Component {
        
         });        
       });  
-      this.setState({newEvents: eventsAsso});
-      //console.log(eventsAsso);
-    
+
+      this.setState({newEvents: eventsAsso});    
 
     }
     render() {
@@ -80,11 +77,12 @@ class EventsCalendar extends React.Component {
             <div style={{margin:50}}>
               <h1 style={{marginBottom: 20}}>Calendrier générale des évènements</h1>
               <Button color="primary" outline onClick={this.loadEventsUser.bind(this)} style={{marginBottom: 30, marginTop:30, marginRight:30}}>
-                Calendrier de mes assos
+                Calendrier mes assos
 					    </Button>
               <Button color="secondary" outline onClick={this.loadGeneralCalendar.bind(this)} style={{marginBottom: 30, marginTop:30}}>
                 Calendrier générale
 					    </Button>
+
               <BigCalendar 
                 localizer={localizer}
                 events= {this.state.newEvents}
