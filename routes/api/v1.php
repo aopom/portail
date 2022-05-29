@@ -163,7 +163,10 @@ Route::group([], function () {
         'articles/{article_id}/actions'	=> 'Article\ActionController',
         'visibilities' => 'Visibility\VisibilityController',
         'semesters' => 'Semester\SemesterController',
-        'eventsMobilizon' => 'Mobilizon\Events',
-        'eventsMobilizon/{shortname}/' => 'Mobilizon\EventsAsso',
+        /*MOBILIZON TX */
+        'eventsMobilizon' => 'Mobilizon\Events', //General calendar
+        'eventsMobilizon/{shortname}/' => 'Mobilizon\EventsAsso', //Asso calendar
+        'eventsMobilizonAsso' => 'Mobilizon\EventsAssoUser', //Followed calendar asso 
+
     ]);
 });

@@ -39,11 +39,18 @@
       });
     }
     componentDidMount() {
-       this.loadGeneralCalendar();
+       this.loadGeneralCalendar(); 
     }
     loadEventsUser(){
       this.setState({events:[]});
       this.setState({newEvents:[]});
+      fetch('/api/v1/eventsMobilizonAsso')
+      .then((response) => response.json())
+      .then(eventsList=> {
+
+        console.log(eventsList);
+
+      });
 
     }
     render() {
@@ -54,7 +61,7 @@
               <Button color="primary" outline onClick={this.loadEventsUser.bind(this)} style={{marginBottom: 30, marginTop:30, marginRight:30}}>
                 Calendrier de mes assos
 					    </Button>
-              <Button color="primary" outline onClick={this.loadGeneralCalendar.bind(this)} style={{marginBottom: 30, marginTop:30}}>
+              <Button color="secondary" outline onClick={this.loadGeneralCalendar.bind(this)} style={{marginBottom: 30, marginTop:30}}>
                 Calendrier générale
 					    </Button>
               <BigCalendar 
