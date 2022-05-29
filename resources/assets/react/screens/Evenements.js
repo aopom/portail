@@ -49,7 +49,6 @@ class EventsCalendar extends React.Component {
        this.loadGeneralCalendar(); 
     }
     loadEventsUser(){
-      console.log(this.props.assos)
       this.setState({events:[]});
       this.setState({newEvents:[]});
 
@@ -70,7 +69,8 @@ class EventsCalendar extends React.Component {
           const newEventsList = this.state.events.map(function(item) {
             return {title: item.title, start : new Date(item.beginsOn), end : new Date(item.endsOn), url: item.url}    
           });
-
+          console.log(newEventsList);
+          
           eventsAsso.push({value:newEventsList});          
         });        
       });  
