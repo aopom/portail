@@ -31,6 +31,9 @@ class EventsCalendar extends React.Component {
         this.state = {newEvents: []};      
     }
     loadGeneralCalendar(){
+      this.setState({events:[]});
+      this.setState({newEvents:[]});
+      
       fetch('/api/v1/eventsMobilizon')
       .then((response) => response.json())
       .then(eventsList=> {
@@ -64,14 +67,13 @@ class EventsCalendar extends React.Component {
           .toLowerCase())
         .then((response) => response.json())
         .then(eventsList=> {
-          
-          const newEventsList = eventsList.map(function(item) {
+          eventsList.map(function(item) {
             eventsAsso.push({title: item.title, start : new Date(item.beginsOn), end : new Date(item.endsOn), url: item.url});
-            return {title: item.title, start : new Date(item.beginsOn), end : new Date(item.endsOn), url: item.url}    
           });
-        //  eventsAsso.push(newEventsList);
+       
         });        
       });  
+      this.setState({newEvents: eventsAsso});
       console.log(eventsAsso);
     
 
