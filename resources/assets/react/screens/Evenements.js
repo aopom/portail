@@ -27,7 +27,7 @@ class EventsCalendar extends React.Component {
         
         this.state = {events: []}; 
         this.state = {newEvents: []};
-        console.log(this.props)
+        console.log(this.props.user)
       
      
     }
