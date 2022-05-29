@@ -12,10 +12,10 @@ use App\Models\Semester;
 use App\Models\Role;
 use App\Exceptions\PortailException;
 use App\Traits\Controller\v1\{
-    HasUserBulkMethods, HasAssos
+    HasUsers
 };
 class EventsAssoUser extends Controller{
-    use HasUserBulkMethods, HasAssos;
+    use HasUsers;
 
     /**
      * List user's associations.
@@ -27,12 +27,13 @@ class EventsAssoUser extends Controller{
     public function index(Request $request, string $user_id=null)
     {
         $user = $this->getUser($request, $user_id);
+       /*
         $choices = $this->getChoices($request, ['joined', 'joining', 'followed']);
         $semester = $this->getSemester($request, $choices);
         print_r($user);
         
-        $assos = collect();
-        print_r($assos);
+        $assos = collect();*/
+        print_r($user);
         /*
         if (in_array('joined', $choices)) {
             $assos = $assos->merge($user->joinedAssos()->with('parent')->where('semester_id', $semester->id)->get());
