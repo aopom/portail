@@ -18,12 +18,7 @@ const localizer = BigCalendar.momentLocalizer(moment);
 let  views = Object.keys(Views).map((k) => Views[k]);
 
 @connect(store => ({
-	config: store.config,
 	user: store.getData('user'),
-	permissions: store.getData('user/permissions'),
-	isAuthenticated: store.isFetched('user'),
-	assos: store.getData('user/assos'),
-	services: store.getData('user/services'),
 }))
 
 class EventsCalendar extends React.Component {
@@ -32,9 +27,6 @@ class EventsCalendar extends React.Component {
 
         this.state = {events: []}; 
         this.state = {newEvents: []};
-        const user = this.props;
-        console.log(user);
-
     }
     loadGeneralCalendar(){
       fetch('/api/v1/eventsMobilizon')
@@ -53,10 +45,10 @@ class EventsCalendar extends React.Component {
     componentDidMount() {
        this.loadGeneralCalendar(); 
     }
-    loadEventsUser(){
+    loadEventsUser(id_user){
       this.setState({events:[]});
       this.setState({newEvents:[]});
-      fetch('/api/v1/eventsMobilizonAsso/'+this.user.id)
+      fetch('/api/v1/eventsMobilizonAsso/'+id_user)
       .then((response) => response.json())
       .then(eventsList=> {
 
@@ -66,7 +58,9 @@ class EventsCalendar extends React.Component {
 
     }
     render() {
-       
+        const user = this.props;
+        console.log(user.id);
+
           return (
 
             <div style={{margin:50}}>
@@ -74,7 +68,7 @@ class EventsCalendar extends React.Component {
               <Button color="primary" outline onClick={this.loadEventsUser.bind(this)} style={{marginBottom: 30, marginTop:30, marginRight:30}}>
                 Calendrier de mes assos
 					    </Button>
-              <Button color="secondary" outline onClick={this.loadGeneralCalendar.bind(this)} style={{marginBottom: 30, marginTop:30}}>
+              <Button color="secondary" outline onClick={this.loadGeneralCalendar(user.id)} style={{marginBottom: 30, marginTop:30}}>
                 Calendrier générale
 					    </Button>
               <BigCalendar 
