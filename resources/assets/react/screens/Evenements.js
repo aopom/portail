@@ -19,6 +19,8 @@ let  views = Object.keys(Views).map((k) => Views[k]);
 
 @connect(store => ({
 	user: store.getData('user'),
+  assos: store.getData('user/assos'),
+
 }))
 
 class EventsCalendar extends React.Component {
@@ -46,13 +48,16 @@ class EventsCalendar extends React.Component {
        this.loadGeneralCalendar(); 
     }
     loadEventsUser(){
+      console.log(this.props.assos)
       this.setState({events:[]});
       this.setState({newEvents:[]});
-      fetch('/api/v1/eventsMobilizonAsso/'+this.props.user.id)
+      /*
+      fetch('/api/v1/eventsMobilizon/')
       .then((response) => response.json())
       .then(eventsList=> {
         console.log(eventsList);
       });
+      */
 
     }
     render() {
