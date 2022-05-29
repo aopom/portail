@@ -31,9 +31,7 @@ class EventsCalendar extends React.Component {
         this.state = {newEvents: []};      
     }
     loadGeneralCalendar(){
-      this.setState({events:[]});
-      this.setState({newEvents:[]});
-      
+
       fetch('/api/v1/eventsMobilizon')
       .then((response) => response.json())
       .then(eventsList=> {
@@ -45,16 +43,14 @@ class EventsCalendar extends React.Component {
         });
 
         this.setState({newEvents: newEventsList});
-        console.log(newEventsList);
+        //console.log(newEventsList);
       });
     }
     componentDidMount() {
        this.loadGeneralCalendar(); 
     }
     loadEventsUser(){
-      this.setState({events:[]});
-      this.setState({newEvents:[]});
-
+     
       const eventsAsso = []
 
       this.props.assos.map(function(item){
@@ -74,7 +70,7 @@ class EventsCalendar extends React.Component {
         });        
       });  
       this.setState({newEvents: eventsAsso});
-      console.log(eventsAsso);
+      //console.log(eventsAsso);
     
 
     }
