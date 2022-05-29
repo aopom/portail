@@ -10,14 +10,7 @@ use GraphQL\Variable;
 
 
 class Events extends Controller{
-    public function __construct()
-    {
-        $this->middleware(
-            \Scopes::allowPublic()->matchOneOfDeepestChildren('user-get-events', 'client-get-events'),
-            ['only' => ['all', 'get']]
-        );
-       
-    }
+  
     public function index(Request $request): JsonResponse{
 
         try{
