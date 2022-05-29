@@ -6,11 +6,17 @@ use Illuminate\Http\Request;
 use GraphQL\Query;
 use GraphQL\Client;
 use GraphQL\Variable;
-
+use App\Http\Requests\UserAssoRequest;
+use App\Models\Asso;
+use App\Models\Semester;
+use App\Models\Role;
+use App\Exceptions\PortailException;
+use App\Traits\Controller\v1\{
+    HasUserBulkMethods, HasAssos
+};
 class EventsAssoUser extends Controller{
-    /**
-     * Must be able to manage user's association.
-     */
+    use HasUserBulkMethods, HasAssos;
+
     public function __construct()
     {
         $this->middleware(
