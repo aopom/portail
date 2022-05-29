@@ -66,9 +66,10 @@ class EventsCalendar extends React.Component {
         .then(eventsList=> {
           
           const newEventsList = eventsList.map(function(item) {
+            eventsAsso.push({title: item.title, start : new Date(item.beginsOn), end : new Date(item.endsOn), url: item.url});
             return {title: item.title, start : new Date(item.beginsOn), end : new Date(item.endsOn), url: item.url}    
           });
-          eventsAsso.push(newEventsList);
+        //  eventsAsso.push(newEventsList);
         });        
       });  
       console.log(eventsAsso);
