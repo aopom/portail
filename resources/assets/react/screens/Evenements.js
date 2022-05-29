@@ -32,7 +32,6 @@ class EventsCalendar extends React.Component {
     
         this.state = {events: []}; 
         this.state = {newEvents: []};
-        console.log(user);
 
     }
     loadGeneralCalendar(){
@@ -65,6 +64,8 @@ class EventsCalendar extends React.Component {
 
     }
     render() {
+        const { isAuthenticated, config, user, permissions, assos, services } = this.props;
+        console.log(this.props);
           return (
 
             <div style={{margin:50}}>
