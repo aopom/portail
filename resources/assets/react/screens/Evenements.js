@@ -10,10 +10,21 @@ import BigCalendar from 'react-big-calendar';
 import moment from 'moment'; 
 import Views from 'react-big-calendar';
 import { Button } from 'reactstrap';
+import { connect } from 'react-redux';
+import actions from '../redux/actions';
 
 const localizer = BigCalendar.momentLocalizer(moment); 
 
 let  views = Object.keys(Views).map((k) => Views[k]);
+
+@connect(store => ({
+	config: store.config,
+	user: store.getData('user'),
+	permissions: store.getData('user/permissions'),
+	isAuthenticated: store.isFetched('user'),
+	assos: store.getData('user/assos'),
+	services: store.getData('user/services'),
+}))
 
 class EventsCalendar extends React.Component {
     constructor(props) {
@@ -21,7 +32,7 @@ class EventsCalendar extends React.Component {
     
         this.state = {events: []}; 
         this.state = {newEvents: []};
-       
+        console.log(user);
 
     }
     loadGeneralCalendar(){
