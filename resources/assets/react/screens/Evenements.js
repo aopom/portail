@@ -62,10 +62,8 @@ class EventsCalendar extends React.Component {
           .toLowerCase())
         .then((response) => response.json())
         .then(eventsList=> {
-          return {eventsList}
-        });
-        console.log(item.shortname);
-        
+          console.log(eventsList);
+        });        
       });
       console.log(assosList);
     
