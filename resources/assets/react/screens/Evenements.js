@@ -25,9 +25,10 @@ let  views = Object.keys(Views).map((k) => Views[k]);
 class EventsCalendar extends React.Component {
     constructor(props) {
         super(props);
-
+        
         this.state = {events: []}; 
         this.state = {newEvents: []};
+        console.log(this.props)
     }
     loadGeneralCalendar(){
       fetch('/api/v1/eventsMobilizon')
