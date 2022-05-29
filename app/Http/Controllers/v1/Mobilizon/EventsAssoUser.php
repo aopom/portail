@@ -29,9 +29,11 @@ class EventsAssoUser extends Controller{
         $user = $this->getUser($request, $user_id);
         $choices = $this->getChoices($request, ['joined', 'joining', 'followed']);
         $semester = $this->getSemester($request, $choices);
-
+        print_r($user);
+        
         $assos = collect();
-
+        print_r($assos);
+        /*
         if (in_array('joined', $choices)) {
             $assos = $assos->merge($user->joinedAssos()->with('parent')->where('semester_id', $semester->id)->get());
         }
@@ -44,8 +46,7 @@ class EventsAssoUser extends Controller{
             $assos = $assos->merge($user->followedAssos()->with('parent')->where('semester_id', $semester->id)->get());
         }
 
-        print_r($user);
-        print_r($assos);
+       */
       
     }
 }
