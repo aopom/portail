@@ -49,11 +49,11 @@ class EventsCalendar extends React.Component {
        this.loadGeneralCalendar(); 
     }
     loadEventsUser(){
-      console.log(user)
+      console.log(this.props.user)
 
       this.setState({events:[]});
       this.setState({newEvents:[]});
-      fetch('/api/v1/eventsMobilizonAsso/'+user.id)
+      fetch('/api/v1/eventsMobilizonAsso/'+this.props.user.id)
       .then((response) => response.json())
       .then(eventsList=> {
 
