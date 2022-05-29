@@ -64,7 +64,8 @@ class EventsCalendar extends React.Component {
         .then(eventsList=> {
           return {events:eventsList};
         });        
-      });    
+      });  
+      console.log(assosList);
     }
     render() {
           return (
