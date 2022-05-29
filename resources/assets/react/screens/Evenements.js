@@ -29,9 +29,11 @@ let  views = Object.keys(Views).map((k) => Views[k]);
 class EventsCalendar extends React.Component {
     constructor(props) {
         super(props);
-    
+
         this.state = {events: []}; 
         this.state = {newEvents: []};
+        const user = this.props;
+        console.log(user);
 
     }
     loadGeneralCalendar(){
@@ -54,7 +56,7 @@ class EventsCalendar extends React.Component {
     loadEventsUser(){
       this.setState({events:[]});
       this.setState({newEvents:[]});
-      fetch('/api/v1/user')
+      fetch('/api/v1/eventsMobilizonAsso/'+this.user.id)
       .then((response) => response.json())
       .then(eventsList=> {
 
@@ -64,8 +66,7 @@ class EventsCalendar extends React.Component {
 
     }
     render() {
-        const { isAuthenticated, config, user, permissions, assos, services } = this.props;
-        console.log(this.props);
+       
           return (
 
             <div style={{margin:50}}>
