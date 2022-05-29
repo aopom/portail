@@ -26,6 +26,7 @@ import actions from '../redux/actions';
 	assos: store.getData('user/assos'),
 	services: store.getData('user/services'),
 }))
+
 class Sidebar extends React.Component {
 	static getAssos(assos) {
 		return assos.map(asso => {

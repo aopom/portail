@@ -166,7 +166,7 @@ Route::group([], function () {
         /*MOBILIZON TX */
         'eventsMobilizon' => 'Mobilizon\Events', //General calendar
         'eventsMobilizon/{shortname}/' => 'Mobilizon\EventsAsso', //Asso calendar
-        'eventsMobilizonAsso' => 'Mobilizon\EventsAssoUser', //Followed calendar asso 
+        'eventsMobilizonAsso/{user_id}' => 'Mobilizon\EventsAssoUser', //Followed calendar asso 
 
     ]);
 });

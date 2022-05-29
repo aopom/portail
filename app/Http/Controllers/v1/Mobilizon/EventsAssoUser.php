@@ -7,7 +7,7 @@ use GraphQL\Query;
 use GraphQL\Client;
 use GraphQL\Variable;
 
-class AssoController extends Controller
+class EventsAssoUser extends Controller
 {
     use HasUserBulkMethods, HasAssos;
 
