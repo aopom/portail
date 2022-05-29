@@ -6,11 +6,20 @@
  */
 
  import React from 'react';
+ import { connect } from 'react-redux';
  import BigCalendar from 'react-big-calendar';
  import moment from 'moment'; 
  import Views from 'react-big-calendar';
  import { Button } from 'reactstrap';
 
+
+ @connect(store => ({
+   config: store.config,
+   user: store.getData('user'),
+   permissions: store.getData('user/permissions'),
+   isAuthenticated: store.isFetched('user'),
+   assos: store.getData('user/assos'),
+ }))
 
  const localizer = BigCalendar.momentLocalizer(moment); 
 
@@ -22,6 +31,8 @@
     
         this.state = {events: []}; 
         this.state = {newEvents: []};
+        console.log(user);
+        console.log(assos);
 
     }
     loadGeneralCalendar(){
