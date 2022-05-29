@@ -64,16 +64,16 @@ class EventsCalendar extends React.Component {
           .toLowerCase())
         .then((response) => response.json())
         .then(eventsList=> {
-          console.log(eventsList);
-
+          
           const newEventsList = eventsList.map(function(item) {
             return {title: item.title, start : new Date(item.beginsOn), end : new Date(item.endsOn), url: item.url}    
           });
+          eventsAsso.push(newEventsList);
           console.log(newEventsList);
-
           
         });        
       });  
+      console.log(eventsAsso);
 
 
     }
