@@ -26,10 +26,7 @@ class EventsCalendar extends React.Component {
         super(props);
         
         this.state = {events: []}; 
-        this.state = {newEvents: []};
-        console.log(this.props.user)
-      
-     
+        this.state = {newEvents: []};      
     }
     loadGeneralCalendar(){
       fetch('/api/v1/eventsMobilizon')
@@ -49,7 +46,6 @@ class EventsCalendar extends React.Component {
        this.loadGeneralCalendar(); 
     }
     loadEventsUser(){
-      console.log(this.props.user)
 
       this.setState({events:[]});
       this.setState({newEvents:[]});
