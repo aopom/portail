@@ -80,7 +80,7 @@ class EventsCalendar extends React.Component {
     toggle(e){
      
       return(
-        <div> e</div>
+        <Modal open={true}>{e}</Modal>
       );
      
     }
