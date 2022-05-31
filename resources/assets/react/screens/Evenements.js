@@ -82,6 +82,9 @@ class EventsCalendar extends React.Component {
       alert(e);
     }
     render() {
+      
+        const {modal} = this.props;
+
           return (
 
             <div style={{margin:50}}>
@@ -102,7 +105,7 @@ class EventsCalendar extends React.Component {
                 onSelectEvent={event => this.toggle([event.url, event.title])}
               />
               
-              <Modal isOpen={this.state.modal} >
+              <Modal isOpen={modal} >
             
               </Modal>
 
