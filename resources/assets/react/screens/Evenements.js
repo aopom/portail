@@ -93,15 +93,12 @@ class EventsCalendar extends React.Component {
            
 
             <div style={{margin:50}}>
-               <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+               <Modal isOpen={this.state.modal} toggle={this.toggle} >
                 <ModalHeader toggle={this.toggle} charCode="Y">Modal title</ModalHeader>
                 <ModalBody>
-
+                  aaaa
                 </ModalBody>
-                <ModalFooter>
-                  <Button color="primary" onClick={this.toggle}>Do Something</Button>{' '}
-                  <Button color="secondary" onClick={this.toggle}>Cancel</Button>
-                </ModalFooter>
+               
               </Modal>
 
               <h1 style={{marginBottom: 20}}>Calendrier générale des évènements</h1>
