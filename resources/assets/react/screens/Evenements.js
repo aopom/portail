@@ -106,6 +106,7 @@ class EventsCalendar extends React.Component {
                 defaultDate= {new Date()}			
                 style={{ height: 700 }}
                 onSelectEvent={(e) => this.toggle([e.title, e.url])}
+                popup={true}
               />
 
               <Modal open={this.state.openedModal} >
