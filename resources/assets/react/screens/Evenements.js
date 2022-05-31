@@ -12,6 +12,17 @@ import Views from 'react-big-calendar';
 import { Button } from 'reactstrap';
 import { connect } from 'react-redux';
 import actions from '../redux/actions';
+import {
+	Modal,
+	ModalBody,
+	ModalHeader,
+	ModalFooter,
+	Form,
+	FormGroup,
+	Button,
+	Label,
+	Input,
+} from 'reactstrap';
 
 const localizer = BigCalendar.momentLocalizer(moment); 
 
@@ -27,6 +38,16 @@ class EventsCalendar extends React.Component {
         super(props);
         
         this.state = {newEvents: []};      
+        this.state = {
+          modal: false
+        };
+        this.toggle = this.toggle.bind(this);
+    }
+
+    toggle() {
+      this.setState({
+        modal: !this.state.modal
+      });
     }
     loadGeneralCalendar(){
 
@@ -73,8 +94,20 @@ class EventsCalendar extends React.Component {
     }
     render() {
           return (
+           
 
             <div style={{margin:50}}>
+               <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+                <ModalHeader toggle={this.toggle} charCode="Y">Modal title</ModalHeader>
+                <ModalBody>
+
+                </ModalBody>
+                <ModalFooter>
+                  <Button color="primary" onClick={this.toggle}>Do Something</Button>{' '}
+                  <Button color="secondary" onClick={this.toggle}>Cancel</Button>
+                </ModalFooter>
+              </Modal>
+
               <h1 style={{marginBottom: 20}}>Calendrier générale des évènements</h1>
               <Button color="primary" outline onClick={this.loadEventsUser.bind(this)} style={{marginBottom: 30, marginTop:30, marginRight:30}}>
                 Calendrier mes assos
@@ -89,7 +122,7 @@ class EventsCalendar extends React.Component {
                 step ={60}
                 defaultDate= {new Date()}			
                 style={{ height: 700 }}
-                onSelectEvent={event => window.open(event.url, "_blank")}
+                onSelectEvent={event => {this.toggle}}
               />
             </div>
           );
