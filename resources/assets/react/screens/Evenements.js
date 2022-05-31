@@ -32,7 +32,7 @@ class EventsCalendar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {newEvents: []};      
-       
+        this.state = {modal: false};
     }
     loadGeneralCalendar(){
 
@@ -101,8 +101,8 @@ class EventsCalendar extends React.Component {
                 style={{ height: 700 }}
                 onSelectEvent={event => this.toggle([event.url, event.title])}
               />
-
-              <Modal >
+              
+              <Modal isOpen={this.state.modal} >
             
               </Modal>
 
