@@ -29,6 +29,7 @@ let  views = Object.keys(Views).map((k) => Views[k]);
 }))
 
 class EventsCalendar extends React.Component {
+
     constructor(props) {
         super(props);
         this.state = {newEvents: []};      
@@ -48,7 +49,6 @@ class EventsCalendar extends React.Component {
     }
     componentDidMount() {
        this.loadGeneralCalendar(); 
- 
     }
     loadEventsUser(){
      
@@ -78,12 +78,13 @@ class EventsCalendar extends React.Component {
 
     }
     toggle(e){
-      alert(e);
+     
+      return(
+        <div> e</div>
+      );
+     
     }
-    render() {
-
-        this.state={modal:false}
-        
+    render() {        
           return (
 
             <div style={{margin:50}}>
@@ -104,9 +105,7 @@ class EventsCalendar extends React.Component {
                 onSelectEvent={event => this.toggle([event.url, event.title])}
               />
               
-              <Modal isOpen={modal} >
             
-              </Modal>
 
             </div>
           );
