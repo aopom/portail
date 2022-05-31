@@ -110,7 +110,7 @@ class EventsCalendar extends React.Component {
                 popup={true}
               />
 
-              <Modal isOpen={this.state.isOpened} >
+              <Modal className="modal-dialog-extended" isOpen={this.state.isOpened} >
                 <ModalHeader>Event</ModalHeader>
               </Modal>
             
