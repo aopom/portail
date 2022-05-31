@@ -38,7 +38,9 @@ class EventsCalendar extends React.Component {
             title: "", 
             description: "",
             start : new Date(),
-            end: new Date()
+            end: new Date(), 
+            organizer: "",
+            url: ""
           }
           
         };   
@@ -57,7 +59,7 @@ class EventsCalendar extends React.Component {
               end : new Date(item.endsOn), 
               url: item.url,
               description: item.description,
-             
+              organizer: item.organizerActor.name             
             }    
         });
 
@@ -90,7 +92,8 @@ class EventsCalendar extends React.Component {
               start : new Date(item.beginsOn), 
               end : new Date(item.endsOn), 
               url: item.url,
-              description: item.description  
+              description: item.description ,
+              organizer: item.organizerActor.name
             });
           });
        
@@ -105,7 +108,8 @@ class EventsCalendar extends React.Component {
       this.setState({isOpened:true});
       this.setState({title: e.title});
       this.setState({description: e.description});
-     
+      this.setState({url: e.url});
+      this.setState({organizer: e.organizer});
     
     }
     closeModal() {
@@ -136,12 +140,19 @@ class EventsCalendar extends React.Component {
 
               <Modal className="modal-dialog-extended" isOpen={this.state.isOpened} style={{width:"60%"}}>
                 <ModalHeader toggle={(e)=>this.closeModal()} style={{padding:20}}>
-                  Nom évènement : {this.state.title}
+                  <b>Nom </b>{this.state.title}
                 </ModalHeader>
                 <ModalBody style={{padding:20}}>
                   
-                  Description :
+                  <h3>Description</h3>
                   {this.state.description}
+
+                  <h3>Organisateur</h3>
+                  {this.state.organizer}
+
+                  <h3>URL</h3>
+                  {this.state.url}
+
                 </ModalBody>
               </Modal>
             
