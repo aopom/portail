@@ -46,6 +46,7 @@ class EventsCalendar extends React.Component {
         modal: !this.state.modal
       });
     }
+    
     loadGeneralCalendar(){
 
       fetch('/api/v1/eventsMobilizon')
@@ -111,7 +112,6 @@ class EventsCalendar extends React.Component {
                 step ={60}
                 defaultDate= {new Date()}			
                 style={{ height: 700 }}
-                onSelectEvent={this.toggle}
               />
             </div>
           );
