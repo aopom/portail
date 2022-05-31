@@ -51,7 +51,7 @@ class EventsCalendar extends React.Component {
       fetch('/api/v1/eventsMobilizon')
       .then((response) => response.json())
       .then(eventsList=> {
-
+        console.log(eventsList);
         const newEventsList = eventsList.map(function(item) {
           return {
               title: item.title, 
@@ -145,13 +145,13 @@ class EventsCalendar extends React.Component {
                 <ModalBody style={{padding:20}}>
                   
                   <b>Description</b>
-                  {this.state.description}
+                  {this.state.description}<br></br>
 
                   <b>Organisateur</b>
-                  {this.state.organizer}
+                  {this.state.organizer}<br></br>
 
                   <b>URL</b>
-                  {this.state.url}
+                  {this.state.url}<br></br>
 
                 </ModalBody>
               </Modal>
