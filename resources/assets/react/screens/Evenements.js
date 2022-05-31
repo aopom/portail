@@ -35,7 +35,8 @@ class EventsCalendar extends React.Component {
           newEvents: [],
           modal: {
             isOpened : false,
-            title: ""
+            title: "", 
+            description: ""
           }
           
         };   
@@ -48,7 +49,13 @@ class EventsCalendar extends React.Component {
       .then(eventsList=> {
 
         const newEventsList = eventsList.map(function(item) {
-          return {title: item.title, start : new Date(item.beginsOn), end : new Date(item.endsOn), url: item.url}    
+          return {
+              title: item.title, 
+              start : new Date(item.beginsOn), 
+              end : new Date(item.endsOn), 
+              url: item.url,
+              description: item.description  
+            }    
         });
 
         this.setState({newEvents: newEventsList});
@@ -75,7 +82,13 @@ class EventsCalendar extends React.Component {
         .then((response) => response.json())
         .then(eventsList=> {
           eventsList.map(function(item) {
-            eventsAsso.push({title: item.title, start : new Date(item.beginsOn), end : new Date(item.endsOn), url: item.url});
+            eventsAsso.push({
+              title: item.title, 
+              start : new Date(item.beginsOn), 
+              end : new Date(item.endsOn), 
+              url: item.url,
+              description: item.description  
+            });
           });
        
         });        
@@ -88,7 +101,9 @@ class EventsCalendar extends React.Component {
     toggle(e) {
       this.setState({isOpened:true});
       this.setState({title: e[0]});
-      console.log(e[0])
+      this.setState({description: e[1]});
+
+      console.log(e)
     }
     closeModal() {
       this.setState({isOpened:false});
@@ -112,12 +127,17 @@ class EventsCalendar extends React.Component {
                 step ={60}
                 defaultDate= {new Date()}			
                 style={{ height: 700 }}
-                onSelectEvent={(e) => this.toggle([e.title, e.url])}
+                onSelectEvent={(e) => this.toggle([e.title, e.description, e.url])}
                 popup={true}
               />
 
-              <Modal className="modal-dialog-extended" isOpen={this.state.isOpened} >
-                <ModalHeader toggle={(e)=>this.closeModal()}>{this.state.title}</ModalHeader>
+              <Modal className="modal-dialog-extended" isOpen={this.state.isOpened} style={{width:"50%"}}>
+                <ModalHeader toggle={(e)=>this.closeModal()} style={{padding:20}}>
+                  Nom évènement : {this.state.title}
+                </ModalHeader>
+                <ModalBody style={{padding:20}}>
+                  {this.state.description}
+                </ModalBody>
               </Modal>
             
 
