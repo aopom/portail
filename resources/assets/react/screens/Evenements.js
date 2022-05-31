@@ -59,7 +59,7 @@ class EventsCalendar extends React.Component {
               end : new Date(item.endsOn), 
               url: item.url,
               description: item.description,
-              organizer: item.organizerActor             
+              organizer: item.organizerActor.name             
             }    
         });
 
@@ -93,7 +93,7 @@ class EventsCalendar extends React.Component {
               end : new Date(item.endsOn), 
               url: item.url,
               description: item.description ,
-              organizer: item.organizerActor
+              organizer: item.organizerActor.name
             });
           });
        
@@ -144,13 +144,13 @@ class EventsCalendar extends React.Component {
                 </ModalHeader>
                 <ModalBody style={{padding:20}}>
                   
-                  <b>Description</b>
+                  <b>Description </b>
                   {this.state.description}<br></br>
 
-                  <b>Organisateur</b>
+                  <b>Organisateur </b>
                   {this.state.organizer}<br></br>
 
-                  <b>URL</b>
+                  <b>URL </b>
                   {this.state.url}<br></br>
 
                 </ModalBody>
