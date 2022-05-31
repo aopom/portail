@@ -105,7 +105,7 @@ class EventsCalendar extends React.Component {
                 step ={60}
                 defaultDate= {new Date()}			
                 style={{ height: 700 }}
-                onSelectEvent={(e) => this.toggle(e)}
+                onSelectEvent={(e) => toggle(e)}
               />
 
               <Modal open={this.state.openedModal} >
