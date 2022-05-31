@@ -16,10 +16,9 @@ import {
 	Modal,
 	ModalBody,
 	ModalHeader,
-	ModalFooter,
 	Label,
+	Input,
 } from 'reactstrap';
-
 const localizer = BigCalendar.momentLocalizer(moment); 
 
 let  views = Object.keys(Views).map((k) => Views[k]);
@@ -34,18 +33,7 @@ class EventsCalendar extends React.Component {
         super(props);
         
         this.state = {newEvents: []};      
-        
-        this.state = {
-          modal: false
-        };
     }
-
-    toggle() {
-      this.setState({
-        modal: !this.state.modal
-      });
-    }
-
     loadGeneralCalendar(){
 
       fetch('/api/v1/eventsMobilizon')
@@ -89,14 +77,10 @@ class EventsCalendar extends React.Component {
       this.setState({newEvents: eventsAsso});    
 
     }
-
     render() {
           return (
-           
 
             <div style={{margin:50}}>
-               
-
               <h1 style={{marginBottom: 20}}>Calendrier générale des évènements</h1>
               <Button color="primary" outline onClick={this.loadEventsUser.bind(this)} style={{marginBottom: 30, marginTop:30, marginRight:30}}>
                 Calendrier mes assos
@@ -111,6 +95,7 @@ class EventsCalendar extends React.Component {
                 step ={60}
                 defaultDate= {new Date()}			
                 style={{ height: 700 }}
+                onSelectEvent={event => window.open(event.url, "_blank")}
               />
             </div>
           );
