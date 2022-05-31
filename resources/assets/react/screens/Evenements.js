@@ -51,7 +51,7 @@ class EventsCalendar extends React.Component {
       fetch('/api/v1/eventsMobilizon')
       .then((response) => response.json())
       .then(eventsList=> {
-        console.log(eventsList);
+        
         const newEventsList = eventsList.map(function(item) {
           return {
               title: item.title, 
@@ -59,7 +59,7 @@ class EventsCalendar extends React.Component {
               end : new Date(item.endsOn), 
               url: item.url,
               description: item.description,
-              organizer: item.organizerActor.name             
+              organizer: item.organizerActor            
             }    
         });
 
@@ -93,7 +93,7 @@ class EventsCalendar extends React.Component {
               end : new Date(item.endsOn), 
               url: item.url,
               description: item.description ,
-              organizer: item.organizerActor.name
+              organizer: item.organizerActor
             });
           });
        
@@ -109,7 +109,11 @@ class EventsCalendar extends React.Component {
       this.setState({title: e.title});
       this.setState({description: e.description});
       this.setState({url: e.url});
-      this.setState({organizer: e.organizer});
+      if(e.organizer !=null){
+        console.log(e.organizer);
+        //this.setState({organizer: e.organizer});
+      }
+      
       console.log(e);
     }
     closeModal() {
