@@ -35,7 +35,8 @@ class EventsCalendar extends React.Component {
           newEvents: [],
           openedModal:false
         };   
-        
+        this.toggle = this.toggle.bind(this);
+
     }
     loadGeneralCalendar(){
 
