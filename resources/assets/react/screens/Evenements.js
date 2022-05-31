@@ -87,10 +87,10 @@ class EventsCalendar extends React.Component {
     /*MODAL*/
     toggle(e) {
       this.setState({isOpened:true});
-      console.log(e)
+      this.setState({title: e[0]});
+      console.log(e[0])
     }
     closeModal() {
-      console.log("je suis là");
       this.setState({isOpened:false});
     }
 
