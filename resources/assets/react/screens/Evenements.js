@@ -36,7 +36,9 @@ class EventsCalendar extends React.Component {
           modal: {
             isOpened : false,
             title: "", 
-            description: ""
+            description: "",
+            start : new Date(),
+            end: new Date()
           }
           
         };   
@@ -54,7 +56,8 @@ class EventsCalendar extends React.Component {
               start : new Date(item.beginsOn), 
               end : new Date(item.endsOn), 
               url: item.url,
-              description: item.description  
+              description: item.description,
+             
             }    
         });
 
@@ -100,9 +103,11 @@ class EventsCalendar extends React.Component {
     /*MODAL*/
     toggle(e) {
       this.setState({isOpened:true});
-     
-
-      console.log(e)
+      this.setState({title: e.title});
+      this.setState({description: e.description});
+      this.setState({start: e.start});
+      this.setState({end: e.end})
+    
     }
     closeModal() {
       this.setState({isOpened:false});
@@ -130,12 +135,13 @@ class EventsCalendar extends React.Component {
                 popup={true}
               />
 
-              <Modal className="modal-dialog-extended" isOpen={this.state.isOpened} style={{width:"50%"}}>
+              <Modal className="modal-dialog-extended" isOpen={this.state.isOpened} style={{width:"60%"}}>
                 <ModalHeader toggle={(e)=>this.closeModal()} style={{padding:20}}>
                   Nom évènement : {this.state.title}
                 </ModalHeader>
                 <ModalBody style={{padding:20}}>
-                  Date début : {this.state.date}
+                  Date début : {this.state.start}
+                  Date fin : {this.state.end}
                   {this.state.description}
                 </ModalBody>
               </Modal>
