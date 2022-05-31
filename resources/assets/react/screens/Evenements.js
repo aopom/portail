@@ -83,12 +83,11 @@ class EventsCalendar extends React.Component {
       this.setState({newEvents: eventsAsso});    
 
     }
-  
-    
+    /*MODAL*/
     toggle(e) {
       this.setState({isOpened:true});
     }
-    closeModal(){
+    closeModal() {
       this.setState({isOpened:false});
     }
 
@@ -115,7 +114,7 @@ class EventsCalendar extends React.Component {
               />
 
               <Modal className="modal-dialog-extended" isOpen={this.state.isOpened} >
-                <ModalHeader toggle={this.closeModal}>Event</ModalHeader>
+                <ModalHeader toggle={(e)=>this.closeModal}>Event</ModalHeader>
               </Modal>
             
 
