@@ -31,8 +31,11 @@ let  views = Object.keys(Views).map((k) => Views[k]);
 class EventsCalendar extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {newEvents: []};   
-        this.state = {openedModal:false}   
+        this.state = {
+          newEvents: [],
+          openedModal:false
+        };   
+        
     }
     loadGeneralCalendar(){
 
@@ -102,7 +105,9 @@ class EventsCalendar extends React.Component {
                 style={{ height: 700 }}
                 onSelectEvent={event => this.toggle([event.url, event.title])}
               />
-              
+              <Modal open={this.openedModal}>
+
+              </Modal>
             
 
             </div>
