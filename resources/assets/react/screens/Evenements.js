@@ -33,7 +33,10 @@ class EventsCalendar extends React.Component {
         super(props);
         this.state = {
           newEvents: [],
-          openedModal: false
+          modal: {
+            isOpened : false
+          }
+          
         };   
 
     }
@@ -83,7 +86,7 @@ class EventsCalendar extends React.Component {
   
     
     toggle(e) {
-      this.setState({openedModal:true});
+      this.setState({isOpened:true});
     }
     render() {        
           return (
@@ -107,7 +110,7 @@ class EventsCalendar extends React.Component {
                 popup={true}
               />
 
-              <Modal isOpen={this.state.openedModal} >
+              <Modal isOpen={this.state.isOpened} >
                 <ModalHeader>Event</ModalHeader>
               </Modal>
             
