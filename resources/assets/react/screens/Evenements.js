@@ -33,7 +33,7 @@ class EventsCalendar extends React.Component {
         super(props);
         this.state = {
           newEvents: [],
-          openedModal:false
+          openedModal: true
         };   
 
     }
