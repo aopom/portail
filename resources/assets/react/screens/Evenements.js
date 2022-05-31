@@ -105,8 +105,7 @@ class EventsCalendar extends React.Component {
       this.setState({isOpened:true});
       this.setState({title: e.title});
       this.setState({description: e.description});
-      this.setState({start: new Date(e.start)});
-      this.setState({end: new Date(e.end)})
+     
     
     }
     closeModal() {
@@ -140,8 +139,7 @@ class EventsCalendar extends React.Component {
                   Nom évènement : {this.state.title}
                 </ModalHeader>
                 <ModalBody style={{padding:20}}>
-                  Date début : {this.state.start}
-                  Date fin : {this.state.end}
+                  
                   Description :
                   {this.state.description}
                 </ModalBody>
