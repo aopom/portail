@@ -100,8 +100,7 @@ class EventsCalendar extends React.Component {
     /*MODAL*/
     toggle(e) {
       this.setState({isOpened:true});
-      this.setState({title: e[0]});
-      this.setState({description: e[1]});
+     
 
       console.log(e)
     }
@@ -127,7 +126,7 @@ class EventsCalendar extends React.Component {
                 step ={60}
                 defaultDate= {new Date()}			
                 style={{ height: 700 }}
-                onSelectEvent={(e) => this.toggle([e.title, e.description, e.url])}
+                onSelectEvent={(e) => this.toggle(e)}
                 popup={true}
               />
 
@@ -136,6 +135,7 @@ class EventsCalendar extends React.Component {
                   Nom évènement : {this.state.title}
                 </ModalHeader>
                 <ModalBody style={{padding:20}}>
+                  Date début : {this.state.date}
                   {this.state.description}
                 </ModalBody>
               </Modal>
