@@ -110,7 +110,7 @@ class EventsCalendar extends React.Component {
       this.setState({description: e.description});
       this.setState({url: e.url});
       this.setState({organizer: e.organizer});
-    
+      console.log(e);
     }
     closeModal() {
       this.setState({isOpened:false});
@@ -144,13 +144,13 @@ class EventsCalendar extends React.Component {
                 </ModalHeader>
                 <ModalBody style={{padding:20}}>
                   
-                  <h3>Description</h3>
+                  <b>Description</b>
                   {this.state.description}
 
-                  <h3>Organisateur</h3>
+                  <b>Organisateur</b>
                   {this.state.organizer}
 
-                  <h3>URL</h3>
+                  <b>URL</b>
                   {this.state.url}
 
                 </ModalBody>
