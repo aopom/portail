@@ -17,11 +17,7 @@ import {
 	ModalBody,
 	ModalHeader,
 	ModalFooter,
-	Form,
-	FormGroup,
-	Button,
 	Label,
-	Input,
 } from 'reactstrap';
 
 const localizer = BigCalendar.momentLocalizer(moment); 
