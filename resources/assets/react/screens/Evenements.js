@@ -101,7 +101,7 @@ class EventsCalendar extends React.Component {
                 step ={60}
                 defaultDate= {new Date()}			
                 style={{ height: 700 }}
-                onSelectEvent={event => this.toggle([event.url, event.name])}
+                onSelectEvent={event => this.toggle([event.url, event.title])}
               />
               
 
