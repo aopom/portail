@@ -80,7 +80,7 @@ class EventsCalendar extends React.Component {
       this.setState({newEvents: eventsAsso});    
 
     }
-    toggle(e){
+    toggle = event => {
       
       this.setState = {openedModal: !this.state.openedModal}
      
@@ -103,9 +103,10 @@ class EventsCalendar extends React.Component {
                 step ={60}
                 defaultDate= {new Date()}			
                 style={{ height: 700 }}
-                onSelectEvent={event => this.toggle([event.url, event.title])}
+                onSelectEvent={this.toggle}
               />
-              <Modal open={this.openedModal}>
+
+              <Modal open={this.state.openedModal} toggle={this.toggle}>
                 <ModalHeader>Event</ModalHeader>
               </Modal>
             
