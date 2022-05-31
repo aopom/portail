@@ -111,7 +111,7 @@ class EventsCalendar extends React.Component {
       this.setState({url: e.url});
       if(e.organizer !=null){
         console.log(e.organizer);
-        //this.setState({organizer: e.organizer});
+        this.setState({organizer: e.organizer.name});
       }
       
       console.log(e);
