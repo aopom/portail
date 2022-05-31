@@ -95,13 +95,7 @@ class EventsCalendar extends React.Component {
            
 
             <div style={{margin:50}}>
-               <Modal isOpen={this.state.modal} >
-                <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
-                <ModalBody>
-                  aaaa
-                </ModalBody>
                
-                </Modal>
 
               <h1 style={{marginBottom: 20}}>Calendrier générale des évènements</h1>
               <Button color="primary" outline onClick={this.loadEventsUser.bind(this)} style={{marginBottom: 30, marginTop:30, marginRight:30}}>
