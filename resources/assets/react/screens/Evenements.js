@@ -29,10 +29,10 @@ let  views = Object.keys(Views).map((k) => Views[k]);
 }))
 
 class EventsCalendar extends React.Component {
-    state = {modal:false}
     constructor(props) {
         super(props);
-        this.state = {newEvents: []};      
+        this.state = {newEvents: []};   
+        this.state = {openedModal:false}   
     }
     loadGeneralCalendar(){
 
@@ -79,7 +79,7 @@ class EventsCalendar extends React.Component {
     }
     toggle(e){
       alert(e);
-      this.setState = {modal:true}
+      this.setState = {openedModal:true}
      
     }
     render() {        
