@@ -32,7 +32,6 @@ class EventsCalendar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {newEvents: []};      
-        this.state = {modal: false};
     }
     loadGeneralCalendar(){
 
@@ -82,9 +81,9 @@ class EventsCalendar extends React.Component {
       alert(e);
     }
     render() {
-      
-        const {modal} = this.props;
 
+        this.state={modal:false}
+        
           return (
 
             <div style={{margin:50}}>
