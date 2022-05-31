@@ -34,6 +34,7 @@ class EventsCalendar extends React.Component {
         super(props);
         
         this.state = {newEvents: []};      
+        
         this.state = {
           modal: false
         };
@@ -88,18 +89,19 @@ class EventsCalendar extends React.Component {
       this.setState({newEvents: eventsAsso});    
 
     }
+
     render() {
           return (
            
 
             <div style={{margin:50}}>
-               <Modal isOpen={this.state.modal} toggle={this.toggle} >
-                <ModalHeader toggle={this.toggle} charCode="Y">Modal title</ModalHeader>
+               <Modal isOpen={this.state.modal} >
+                <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
                 <ModalBody>
                   aaaa
                 </ModalBody>
                
-              </Modal>
+                </Modal>
 
               <h1 style={{marginBottom: 20}}>Calendrier générale des évènements</h1>
               <Button color="primary" outline onClick={this.loadEventsUser.bind(this)} style={{marginBottom: 30, marginTop:30, marginRight:30}}>
@@ -115,7 +117,7 @@ class EventsCalendar extends React.Component {
                 step ={60}
                 defaultDate= {new Date()}			
                 style={{ height: 700 }}
-                onSelectEvent={event => {this.toggle}}
+                onSelectEvent={this.toggle}
               />
             </div>
           );
