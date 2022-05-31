@@ -77,6 +77,9 @@ class EventsCalendar extends React.Component {
       this.setState({newEvents: eventsAsso});    
 
     }
+    toggle(e){
+      alert(e);
+    }
     render() {
           return (
 
@@ -95,7 +98,7 @@ class EventsCalendar extends React.Component {
                 step ={60}
                 defaultDate= {new Date()}			
                 style={{ height: 700 }}
-                onSelectEvent={event => window.open(event.url, "_blank")}
+                onSelectEvent={this.toggle(event.url)}
               />
             </div>
           );
