@@ -154,8 +154,7 @@ class EventsCalendar extends React.Component {
                   <b>Organisateur </b>
                   {this.state.organizer}<br></br>
 
-                  <b>URL </b>
-                  {this.state.url}<br></br>
+                  <a href={this.state.url}>Aller vers le site de l'évènement</a><br></br>
 
                 </ModalBody>
               </Modal>
