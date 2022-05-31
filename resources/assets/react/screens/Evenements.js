@@ -105,8 +105,8 @@ class EventsCalendar extends React.Component {
       this.setState({isOpened:true});
       this.setState({title: e.title});
       this.setState({description: e.description});
-      this.setState({start: e.start});
-      this.setState({end: e.end})
+      this.setState({start: new Date(e.start)});
+      this.setState({end: new Date(e.end)})
     
     }
     closeModal() {
