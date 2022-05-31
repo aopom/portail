@@ -37,8 +37,8 @@ class EventsCalendar extends React.Component {
             isOpened : false,
             title: "", 
             description: "",
-            start : new Date(),
-            end: new Date()
+            start : "",
+            end: ""
           }
           
         };   
