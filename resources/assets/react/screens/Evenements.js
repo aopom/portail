@@ -109,6 +109,7 @@ class EventsCalendar extends React.Component {
       this.setState({title: e.title});
       this.setState({description: e.description});
       this.setState({url: e.url});
+      this.setState({start: e.start.toString()})
       
       if(e.organizer !=null){
         this.setState({organizer: e.organizer.name});
@@ -149,22 +150,25 @@ class EventsCalendar extends React.Component {
                 <ModalBody style={{padding:20}}>
                   {
                   this.state.description ? 
-                    <div style={{marginBottom: 20}}><Label><b>Description</b></Label>{this.state.description}</div>:
+                    <div style={{marginBottom: 20}}><Label><b>Description</b></Label><br/>{this.state.description}</div>:
                     <div></div>
                   }
                  
                   {
                   this.state.organizer ? 
-                    <div style={{marginBottom: 20}}><Label><b>Organisateur</b></Label>{this.state.organizer}</div>:
+                    <div style={{marginBottom: 20}}><Label><b>Organisateur</b></Label><br/>{this.state.organizer}</div>:
                     <div></div>
                   }
                   <div style={{marginBottom: 20}}>
-                    <Label><b>URL</b></Label>
-                    <a href={this.state.url}> Cliquez ici pour aller vers le site de l'évènement</a><br></br>
+                    <Label><b>Date de début</b></Label><br/>
+                    {this.state.start}
                   </div>
-                 
-                 
-
+                  
+                  <div style={{marginBottom: 20}}>
+                    <Label><b>URL</b></Label><br/>
+                    <a href={this.state.url}> Cliquez ici pour aller vers le site de l'évènement</a>
+                  </div>
+              
                 </ModalBody>
               </Modal>
             
