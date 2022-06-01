@@ -230,21 +230,38 @@ export default Calendar;
  * @author Emma Falkiewitz
  */
 
- import React from 'react';
- import BigCalendar from 'react-big-calendar';
- import moment from 'moment'; 
- import Views from 'react-big-calendar';
+import React from 'react';
+import BigCalendar from 'react-big-calendar';
+import moment from 'moment'; 
+import Views from 'react-big-calendar';
+import {
+	Modal,
+	ModalBody,
+	ModalHeader,
+	Label,
+} from 'reactstrap';
 
- const localizer = BigCalendar .momentLocalizer(moment); 
+const localizer = BigCalendar .momentLocalizer(moment); 
 
- let  views = Object.keys(Views).map((k) => Views[k]);
+let  views = Object.keys(Views).map((k) => Views[k]);
 
- class Calendar extends React.Component {
+class Calendar extends React.Component {
     constructor(props) {
         super(props);
 	
-        this.state = {events: []}; 
-        this.state = {newEvents: []};
+        
+        this.state = {
+			newEvents: [],
+			modal: {
+				isOpened : false,
+				title: "", 
+				description: "",
+				start : "",
+				end: "", 
+				organizer: "",
+				url: ""
+			  }
+		};
 
     }
     componentDidMount() {
@@ -260,8 +277,7 @@ export default Calendar;
         .then((response) => response.json())
         .then(eventsList=> {
 
-          this.setState({ events: eventsList });
-          const newEventsList = this.state.events.map(function(item) {
+          const newEventsList = eventsList.map(function(item) {
             return {title: item.title, start : new Date(item.beginsOn), end : new Date(item.endsOn), url: item.url}    
           });
 
@@ -269,6 +285,23 @@ export default Calendar;
 
         });
     }
+	/*MODAL*/
+	toggle(e) {
+		this.setState({isOpened:true});
+		this.setState({title: e.title});
+		this.setState({description: e.description});
+		this.setState({url: e.url});
+		this.setState({start: e.start.toString()})
+		this.setState({end: e.end.toString()})
+		
+		if(e.organizer !=null){
+		  this.setState({organizer: e.organizer.name});
+		}
+	}
+	closeModal() {
+		this.setState({isOpened:false});
+	}
+  
 
     render() {
           return (
@@ -282,6 +315,39 @@ export default Calendar;
                 style={{ height: 700 }}
                 onSelectEvent={event => window.open(event.url, "_blank")}
               />
+			   <Modal className="modal-dialog-extended" isOpen={this.state.isOpened} style={{width:"60%"}}>
+                <ModalHeader toggle={(e)=>this.closeModal()} style={{padding:20}}>
+                  <b>Nom </b>{this.state.title}
+                </ModalHeader>
+                <ModalBody style={{padding:20}}>
+                  {
+                  this.state.description ? 
+                    <div style={{marginBottom: 20}}><Label><b>Description</b></Label><br/>{this.state.description}</div>:
+                    <div></div>
+                  }
+                 
+                  {
+                  this.state.organizer ? 
+                    <div style={{marginBottom: 20}}><Label><b>Organisateur</b></Label><br/>{this.state.organizer}</div>:
+                    <div></div>
+                  }
+                  <div style={{marginBottom: 20}}>
+                    <Label><b>Date de début</b></Label><br/>
+                    {this.state.start}
+                  </div>
+                  <div style={{marginBottom: 20}}>
+                    <Label><b>Date de fin</b></Label><br/>
+                    {this.state.end}
+                  </div>
+                  
+                  <div style={{marginBottom: 20}}>
+                    <Label><b>URL</b></Label><br/>
+                    <a href={this.state.url}> {this.state.url}</a>
+                  </div>
+              
+                </ModalBody>
+              </Modal>
+            
             </div>
           );
      }
