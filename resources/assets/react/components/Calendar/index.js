@@ -344,7 +344,6 @@ class Calendar extends React.Component {
                     <Label><b>URL</b></Label><br/>
                     <a href={this.state.url}> {this.state.url}</a>
                   </div>
-              
                 </ModalBody>
               </Modal>
             
