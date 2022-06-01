@@ -37,8 +37,8 @@ class EventsCalendar extends React.Component {
             isOpened : false,
             title: "", 
             description: "",
-            start : new Date(),
-            end: new Date(), 
+            start : "",
+            end: "", 
             organizer: "",
             url: ""
           }
@@ -109,12 +109,13 @@ class EventsCalendar extends React.Component {
       this.setState({title: e.title});
       this.setState({description: e.description});
       this.setState({url: e.url});
+      
       if(e.organizer !=null){
         console.log(e.organizer);
         this.setState({organizer: e.organizer.name});
       }
       
-      console.log(e);
+      console.log(typeof(e.start));
     }
     closeModal() {
       this.setState({isOpened:false});
@@ -149,17 +150,18 @@ class EventsCalendar extends React.Component {
                 <ModalBody style={{padding:20}}>
                   {
                   this.state.description ? 
-                    <div><Label><b>Description</b></Label><br></br> {this.state.description}</div>:
+                    <div><Label><b>Description</b></Label><br></br> {this.state.description}<br></br></div>:
                     <div></div>
                   }
                  
                   {
                   this.state.organizer ? 
-                    <div><Label><b>Organisateur</b></Label><br></br> {this.state.organizer}</div>:
+                    <div><Label><b>Organisateur</b></Label><br></br> {this.state.organizer}<br></br></div>:
                     <div></div>
                   }
                   
-                  <Label> <a href={this.state.url}> Aller vers le site de l'évènement</a><br></br></Label>
+                  <Label><b>URL</b></Label>
+                  <a href={this.state.url}> Cliquez ici pour aller vers le site de l'évènement</a><br></br>
                  
 
                 </ModalBody>
