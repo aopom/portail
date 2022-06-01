@@ -120,9 +120,9 @@ class EventsCalendar extends React.Component {
       this.setState({isOpened:false});
     }
 
-    render() {        
+    render() {  
           return (
-
+            
             <div style={{margin:50}}>
               <h1 style={{marginBottom: 20}}>Calendrier générale des évènements</h1>
               <Button color="primary" outline onClick={this.loadEventsUser.bind(this)} style={{marginBottom: 30, marginTop:30, marginRight:30}}>
@@ -147,14 +147,20 @@ class EventsCalendar extends React.Component {
                   <b>Nom </b>{this.state.title}
                 </ModalHeader>
                 <ModalBody style={{padding:20}}>
+                  {
+                  this.state.description ? 
+                    <div><Label><b>Description</b></Label><br></br> {this.state.description}</div>:
+                    <div></div>
+                  }
+                 
+                  {
+                  this.state.organizer ? 
+                    <div><Label><b>Organisateur</b></Label><br></br> {this.state.organizer}</div>:
+                    <div></div>
+                  }
                   
-                  <b>Description </b>
-                  {this.state.description}<br></br>
-
-                  <b>Organisateur </b>
-                  {this.state.organizer}<br></br>
-
-                  <a href={this.state.url}>Aller vers le site de l'évènement</a><br></br>
+                  <Label> <a href={this.state.url}> Aller vers le site de l'évènement</a><br></br></Label>
+                 
 
                 </ModalBody>
               </Modal>
