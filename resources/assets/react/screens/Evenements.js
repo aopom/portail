@@ -17,7 +17,6 @@ import {
 	ModalBody,
 	ModalHeader,
 	Label,
-	Input,
 } from 'reactstrap';
 const localizer = BigCalendar.momentLocalizer(moment); 
 
@@ -110,12 +109,11 @@ class EventsCalendar extends React.Component {
       this.setState({description: e.description});
       this.setState({url: e.url});
       this.setState({start: e.start.toString()})
+      this.setState({end: e.end.toString()})
       
       if(e.organizer !=null){
         this.setState({organizer: e.organizer.name});
       }
-      
-      console.log(e.start.toString());
     }
     closeModal() {
       this.setState({isOpened:false});
@@ -163,10 +161,14 @@ class EventsCalendar extends React.Component {
                     <Label><b>Date de début</b></Label><br/>
                     {this.state.start}
                   </div>
+                  <div style={{marginBottom: 20}}>
+                    <Label><b>Date de fin</b></Label><br/>
+                    {this.state.end}
+                  </div>
                   
                   <div style={{marginBottom: 20}}>
                     <Label><b>URL</b></Label><br/>
-                    <a href={this.state.url}> Cliquez ici pour aller vers le site de l'évènement</a>
+                    <a href={this.state.url}> {this.state.url}</a>
                   </div>
               
                 </ModalBody>
