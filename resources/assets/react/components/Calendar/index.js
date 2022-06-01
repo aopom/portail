@@ -313,7 +313,8 @@ class Calendar extends React.Component {
                 step ={60}
                 defaultDate= {new Date()}			
                 style={{ height: 700 }}
-                onSelectEvent={event => window.open(event.url, "_blank")}
+                onSelectEvent={(e) => this.toggle(e)}
+                popup={true}
               />
 			   <Modal className="modal-dialog-extended" isOpen={this.state.isOpened} style={{width:"60%"}}>
                 <ModalHeader toggle={(e)=>this.closeModal()} style={{padding:20}}>
