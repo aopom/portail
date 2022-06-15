@@ -289,7 +289,7 @@ class Calendar extends React.Component {
 	toggle(e) {
 		this.setState({isOpened:true});
 		this.setState({title: e.title});
-		this.setState({description: e.description});
+		this.setState({description: e.description.replaceAll("<p>", "").replaceAll("</p>", "")});
 		this.setState({url: e.url});
 		this.setState({start: e.start.toString()})
 		this.setState({end: e.end.toString()})
