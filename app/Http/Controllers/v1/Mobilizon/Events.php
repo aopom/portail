@@ -15,7 +15,7 @@ class Events extends Controller{
 
         try{
             $client = new Client(
-                    'https://mobilizon.tx.picasoft.net/graphiql'
+                    'http://mobilizon:4000/graphiql'
             );
         }catch(ConnectExeption $exception){
             print_r( $exception->getErrorDetails());
@@ -67,7 +67,7 @@ class Events extends Controller{
     public function show(Request $request, string $shortname): JsonResponse{
         try{
             $client = new Client(
-                'https://mobilizon.tx.picasoft.net/graphiql'
+                'http://mobilizon:4000/graphiql'
             );
         }catch(ConnectExeption $exception){
             print_r( $exception->getErrorDetails());

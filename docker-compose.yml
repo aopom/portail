@@ -57,5 +57,35 @@ services:
       - MYSQL_DATABASE=portail
     command: --default-authentication-plugin=mysql_native_password
 
+  # The Mobilizon (Mobilizon)
+  mobilizon:
+    image: framasoft/mobilizon
+    environment:
+      - MOBILIZON_INSTANCE_HOST=localhost
+      - MOBILIZON_INSTANCE_PORT=4000
+      - MOBILIZON_INSTANCE_NAME=Mobilizon_BDE-UTC
+      - MOBILIZON_INSTANCE_REGISTRATIONS_OPEN=true
+      - MOBILIZON_INSTANCE_EMAIL=picasoft@assos.utc.fr
+      - MOBILIZON_REPLY_EMAIL=picasoft@assos.utc.fr
+      - MOBILIZON_ADMIN_EMAIL=picasoft@assos.utc.fr
+      - MOBILIZON_DATABASE_USERNAME=mobilizon
+      - MOBILIZON_DATABASE_PASSWORD=mobilizon
+      - MOBILIZON_DATABASE_DBNAME=mobilizon
+      - MOBILIZON_DATABASE_HOST=mobilizon-database
+    volumes:
+      - ./public/uploads:/var/lib/mobilizon/uploads
+      # - ${PWD}/config.exs:/etc/mobilizon/config.exs:ro
+    ports:
+      - "4000:4000"
+
+  mobilizon-database:
+    image: postgis/postgis:13-3.1
+    volumes:
+      - ./db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=mobilizon
+      - POSTGRES_PASSWORD=mobilizon
+      - POSTGRES_DB=mobilizon
+
 volumes:
   dbdata:
