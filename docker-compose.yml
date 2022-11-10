@@ -59,7 +59,7 @@ services:
 
   # The Mobilizon (Mobilizon)
   mobilizon:
-    image: framasoft/mobilizon
+    image: framasoft/mobilizon:2.1.0
     environment:
       - MOBILIZON_INSTANCE_HOST=localhost
       - MOBILIZON_INSTANCE_PORT=4000
