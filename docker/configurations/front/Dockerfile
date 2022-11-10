@@ -1,4 +1,4 @@
-FROM node:lts
+FROM node:gallium
 LABEL maintainer="Cesar Richard <cesar.richard2@gmail.com>"
 
 RUN npm install --global cross-env
